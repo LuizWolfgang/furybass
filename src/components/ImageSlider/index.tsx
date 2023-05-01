@@ -1,7 +1,6 @@
 import React, {useRef, useState} from 'react';
 import { View, Dimensions, FlatList, ViewToken} from 'react-native';
 import { Bullet } from '../../components/Bullet';
-// import Video from 'react-native-video';
 
 import { Video, ResizeMode } from 'expo-av';
 
@@ -17,8 +16,10 @@ interface Props {
  paused: boolean;
  imagesUrl: {
    id: string;
-   photo: string;
+   name: string;
+   media: string;
    type: string;
+   url: string;
  }[];
 }
 
@@ -54,14 +55,6 @@ export function ImageSlider({imagesUrl, paused}: Props){
               <CarImage source={{ uri: item.url }} />
               :
               <View style={{ width: windowWidth, height: windowHeight, position: "relative" }}>
-                {/* <Video
-                  ref={video}
-                  style={styles.video}
-                  source={item.url}
-                  paused={imageIndex !== index || paused}
-                  resizeMode={ResizeMode.COVER}
-                /> */}
-
                 <Video
                   ref={video}
                   style={styles.video}
@@ -86,7 +79,6 @@ export function ImageSlider({imagesUrl, paused}: Props){
           imagesUrl.map((item , index) => (
             <Bullet
               key={String(item.id)}
-              item={item.type}
               actived={index !== imageIndex}
             />
           ))
