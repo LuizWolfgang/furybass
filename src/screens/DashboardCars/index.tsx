@@ -63,6 +63,7 @@ export function DashboardCars(){
           </ContentMenu>
         </HeaderContent>
       </Header>
+
       <ContentSearch>
         <SearchInput/>
       </ContentSearch>
@@ -104,7 +105,6 @@ export function DashboardCars(){
                                   paused={true}
                                 />
                               </ContentCars>
-
                           }
                         </InCenterConsumer>
                       </View>

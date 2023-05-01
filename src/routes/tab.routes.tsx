@@ -66,8 +66,8 @@ export function TabRoutes() {
       tabBarStyle: {
         backgroundColor: `${theme.colors.header}`,
         borderTopWidth: 0,
-        height: Platform.OS === 'android' ? 'auto' : 80,
-        paddingBottom: 25,
+        height: Platform.OS === 'android' ? 60 : 80,
+        paddingBottom: Platform.OS === 'android' ? 10 : 25,
         paddingTop:6,
       },
       tabBarBadgeStyle:{
