@@ -60,7 +60,6 @@ export function TabRoutes() {
   return (
     <Navigator screenOptions={{
       headerShown: false,
-
       tabBarActiveTintColor: '#8f7a7a',
       tabBarInactiveTintColor: '#323030',
       tabBarStyle: {
@@ -69,6 +68,9 @@ export function TabRoutes() {
         height: Platform.OS === 'android' ? 60 : 80,
         paddingBottom: Platform.OS === 'android' ? 10 : 25,
         paddingTop:6,
+      },
+      tabBarLabelStyle:{
+        color: '#fefefe'
       },
       tabBarBadgeStyle:{
         fontWeight: 'bold',
@@ -93,7 +95,7 @@ export function TabRoutes() {
         }}/>
 
       <Screen
-        name="Eventos"
+        name="CriarAnuncio"
         component={SignIn}
         options={{
           tabBarLabel: () => null,
@@ -112,7 +114,7 @@ export function TabRoutes() {
         }}/>
 
       <Screen
-        name="eventos"
+        name="Eventos"
         component={SignIn}
         options={{
           tabBarIcon: ({ focused, color }) => (

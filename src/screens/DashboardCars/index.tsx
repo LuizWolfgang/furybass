@@ -10,20 +10,16 @@ import {
 } from "@n1ru4l/react-in-center-of-screen";
 
 const { height: windowHeight } = Dimensions.get("window");
-const windowPlatform = Platform.OS ==='ios' ? 1.5 : 1.3
+console.log(windowHeight);
+const windowPlatform = Platform.OS ==='ios' ? 1.5 : 1.33
 const boxHeight = windowHeight / windowPlatform
 
 import {
   Container,
   Header,
   HeaderContent,
-  UserPhoto,
-  User,
-  UserName,
-  UserGreeting,
   ContentCars,
   ContentMenu,
-  ContentSearch,
   Content
 } from './styles';
 
@@ -37,7 +33,18 @@ import { SearchInput } from '../../components/SearchInput';
 
 export function DashboardCars(){
   const [loading, setLoading] = useState(true);
-  const [focusedIndex, setFocusedIndex] = useState();
+  const [filteredData, setFilteredData] = useState(data);
+
+  const filterData = (searchText) => {
+    console.log('to aqui')
+    const newData = data.filter(item => {
+      const itemData = item.name.toUpperCase();
+      const textData = searchText.toUpperCase();
+      return itemData.indexOf(textData) > -1;
+    });
+    setFilteredData(newData);
+  }
+
   const navigation = useNavigation();
 
   return (
@@ -49,24 +56,17 @@ export function DashboardCars(){
       />
       <Header>
         <HeaderContent>
-          <UserPhoto/>
-
-          <User>
-            <UserGreeting>Olá,</UserGreeting>
-            <UserName>Luiz andre</UserName>
-          </User>
-
+          <SearchInput
+            onFilter={filterData}
+          />
           <ContentMenu>
             <TouchableOpacity onPress={() => navigation.openDrawer()}>
-              <Ionicons name="menu" size={32} color="white" />
+              <Ionicons name="menu" size={30} color="white" />
             </TouchableOpacity>
           </ContentMenu>
         </HeaderContent>
       </Header>
 
-      <ContentSearch>
-        <SearchInput/>
-      </ContentSearch>
       {
         <Content>
           <OffsetYProvider
@@ -77,8 +77,7 @@ export function DashboardCars(){
           >
             {({ setOffsetY }) => (
               <FlatList
-                data={data}
-                contentContainerStyle={{ marginBottom: 80}}
+                data={filteredData}
                 onScroll={ev => {
                   setOffsetY(ev.nativeEvent.contentOffset.y);
                 }}
@@ -93,7 +92,6 @@ export function DashboardCars(){
                               <ContentCars>
                                 <CardCars
                                   data={item}
-                                  focusedIndex={focusedIndex}
                                   paused={false}
                                 />
                               </ContentCars>
@@ -101,7 +99,6 @@ export function DashboardCars(){
                               <ContentCars>
                                 <CardCars
                                   data={item}
-                                  focusedIndex={focusedIndex}
                                   paused={true}
                                 />
                               </ContentCars>

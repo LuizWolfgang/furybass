@@ -48,11 +48,14 @@ export function ImageSlider({imagesUrl, paused}: Props){
         viewabilityConfig={{
           itemVisiblePercentThreshold: 40,
         }}
+        contentContainerStyle={{ marginTop: 25}}
         keyExtractor={item => item.id}
         renderItem={({ item, index}) => (
           <CarImageWrapper>
             { item.type === "image" ?
-              <CarImage source={{ uri: item.url }} />
+              <CarImage
+                source={{ uri: item.url }}
+              />
               :
               <View style={{ width: windowWidth, height: windowHeight, position: "relative" }}>
                 <Video
@@ -86,39 +89,4 @@ export function ImageSlider({imagesUrl, paused}: Props){
       </ImageIndexes>
     </Container>
   );
-
 }
-
-
-// const styles = StyleSheet.create({
-//   container: {
-//     border: 'none',
-//     justifyContent: 'center',
-//   },
-//   video: {
-//     alignSelf: 'center',
-//     width: 390,
-//     height: 250,
-//     border: 'none',
-//   },
-//   buttons: {
-//     flexDirection: 'row',
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//   },
-// });
-
-{/* <Video
-ref={video}
-style={styles.video}
-source={item.url}
-usePoster
-isLooping
-volume={1}
-useNativeControls
-resizeMode={ResizeMode.COVER}
-onPlaybackStatusUpdate={status => setStatus({ status })} /><View style={styles.buttons}>
-<Button
-  title={status.isPlaying ? 'Pause' : 'Play'}
-  onPress={handleVideo} />
-</View> */}
