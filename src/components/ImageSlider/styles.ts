@@ -1,19 +1,16 @@
 import { Dimensions, StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
-import FastImage from 'react-native-fast-image';
 
-interface ImageIndexProps{
-    actived: boolean;
-}
-
-export const Container = styled.View`
-
-`;
+const DIMENSIONS = Dimensions.get("screen").height
+console.log(DIMENSIONS)
+export const Container = styled.View``;
 
 export const ImageIndexes = styled.View`
   flex-direction: row;
   justify-content: center ;
-  padding: 5px ;
+  align-items: center;
+
+  margin-top: 10px;
 `
 
 export const CarImageWrapper = styled.View`
@@ -24,27 +21,14 @@ export const CarImageWrapper = styled.View`
 `
 export const CarImage = styled.Image`
     width: 100%;
-    height: 96%;
-    border-radius: 10px;
-
+    height: 100%;
 `
 export const styles = StyleSheet.create({
-  slide: {
-    width: '100%',
-    height: '97%',
-    borderRadius: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop:5
-
-  },
-  image: {
+  video: {
+    flex: 1,
     width: '100%',
     height: '100%',
-  },
-  video: {
-    width: '100%',
-    height: '90%',
+    marginTop: DIMENSIONS > 850 ? 19 : 7,
     justifyContent: 'center',
     alignItems: 'center'
   },

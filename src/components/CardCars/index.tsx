@@ -15,7 +15,6 @@ import { useNavigation } from '@react-navigation/native';
 
 type CardProps = {
     data: any;
-    focusedIndex: boolean;
     paused: boolean;
 }
 type authScreenProps = {
@@ -36,13 +35,13 @@ export function CardCars({ data , paused}: CardProps){
       </CarrouselView>
       <InfoCars>
         <UserGreeting>
-             Saveiro Cross 2018
+          {data.name}
         </UserGreeting>
         <SubTitle>
-            R$: 180.000.00
+            R$: {data.price}
         </SubTitle>
         <Km>
-            km: 280 mil
+            km: {data.km}
         </Km>
       </InfoCars>
       <Details onPress={() => navigation.navigate('CarDetails')}>

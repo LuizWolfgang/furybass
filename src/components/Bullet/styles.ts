@@ -9,7 +9,7 @@ export const Container= styled.View<Props>`
   height: 6px;
 
   background-color: ${({ theme, actived }) =>
-    actived ? theme.colors.title : theme.colors.shape};
+    actived ? theme.colors.title : theme.colors.success};
 
   margin-left: 8px;
   border-radius: 3px;

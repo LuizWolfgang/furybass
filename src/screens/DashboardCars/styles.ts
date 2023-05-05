@@ -1,3 +1,5 @@
+import { Platform } from 'react-native';
+import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 import { RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
 export const Container = styled.View`
@@ -7,21 +9,20 @@ export const Container = styled.View`
 
 export const Header = styled.View`
   width:100%;
-  height:113px;
+  height:90px;
   background-color: ${({ theme }) => theme.colors.header};
-  justify-content: flex-end;
-  padding: 20px 24px;
+  padding: 0px 15px;
+  margin-top: ${getStatusBarHeight()}px;
 `;
 
 export const HeaderContent = styled.View`
   flex-direction: row;
   align-items: center;
-  flex-direction: row;
-
+  justify-content: space-between;
+  flex:1;
 `
 export const User = styled.View`
   margin-left: 17px;
-
 `;
 
 export const UserName = styled.Text`
@@ -46,13 +47,14 @@ export const UserPhoto = styled.View`
 export const ContentCars = styled.View`
   justify-content: center;
   align-items: center;
-  margin-top:50px;
+
 
 `
 export const ContentMenu = styled.View`
- align-items: flex-end ;
- justify-content: center;
- flex:1;
+    flex-direction: row ;
+    margin-left: 10px;
+    justify-content: center;
+    align-items: center;
 `
 
 export const Content = styled.View`

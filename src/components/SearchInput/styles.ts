@@ -5,12 +5,17 @@ export const Container = styled.View`
   flex-direction: row;
   align-items: center;
   background-color: #f5f5f5;
-  padding: 10px;
+  padding: 4px;
+  width: 85%;
   border-radius: 10px;
 `;
 
+export const ContentSearch = styled.View`
+    margin-left: 10px;
+`
+
 export const SearchIcon = styled(Ionicons)`
-  margin-right: 8px;
+    margin-right: 10px;
 `;
 
 export const Input = styled.TextInput`
@@ -20,9 +25,9 @@ export const Input = styled.TextInput`
 `;
 
 export const Divider = styled.View`
-  height: 20px;
+  height: 18px;
   width: 1px;
-  background-color: ${({ theme }) => theme.colors.success};
+  background-color: ${({ theme }) => theme.colors.text};
 `
 
 export const FilterIcon = styled(Ionicons)`
