@@ -13,7 +13,7 @@ export const Container = styled.View`
 `;
 
 export const CarrouselView = styled.View`
-  height: ${DIMENSIONS < 700 ? 280 : 400}px;
+  height: ${DIMENSIONS < 700 ? 300 : 400}px;
   justify-content: flex-end;
 
  `

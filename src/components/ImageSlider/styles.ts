@@ -1,6 +1,8 @@
 import { Dimensions, StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
 
+const DIMENSIONS = Dimensions.get("screen").height
+console.log(DIMENSIONS)
 export const Container = styled.View``;
 
 export const ImageIndexes = styled.View`
@@ -25,8 +27,8 @@ export const styles = StyleSheet.create({
   video: {
     flex: 1,
     width: '100%',
-    height: '98%',
-    marginTop: 13,
+    height: '100%',
+    marginTop: DIMENSIONS > 850 ? 19 : 7,
     justifyContent: 'center',
     alignItems: 'center'
   },

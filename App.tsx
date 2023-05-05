@@ -18,7 +18,7 @@ import theme from './src/styles/theme';
 
 import { SignUp } from './src/screens/SignUp';
 import { SignIn } from './src/screens/SignIn';
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator, StatusBar } from 'react-native';
 import { Routes } from './src/routes';
 
 export default function App() {
@@ -36,6 +36,11 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
+      <StatusBar
+        barStyle="light-content"
+        backgroundColor="transparent"
+        translucent
+      />
       <Routes />
     </ThemeProvider>
   )

@@ -30,6 +30,7 @@ interface ChangeImageProps{
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight =  Dimensions.get("window").width;
+const DIMENSIONS = Dimensions.get("window").height < 700 ? 290 : windowHeight
 
 export function ImageSlider({imagesUrl, paused}: Props){
   const [imageIndex, setimageIndex] = useState(0);
@@ -57,7 +58,7 @@ export function ImageSlider({imagesUrl, paused}: Props){
                 source={{ uri: item.url }}
               />
               :
-              <View style={{ width: windowWidth, height: windowHeight, position: "relative" }}>
+              <View style={{ width: windowWidth, height: DIMENSIONS, position: "relative" }}>
                 <Video
                   ref={video}
                   style={styles.video}
