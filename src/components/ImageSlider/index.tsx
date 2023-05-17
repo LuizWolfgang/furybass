@@ -1,5 +1,5 @@
 import React, {useRef, useState} from 'react';
-import { View, Dimensions, FlatList, ViewToken} from 'react-native';
+import { View, Dimensions, FlatList, ViewToken, ActivityIndicator} from 'react-native';
 import { Bullet } from '../../components/Bullet';
 
 import { Video, ResizeMode } from 'expo-av';
@@ -13,6 +13,7 @@ import {
 } from './styles';
 
 interface Props {
+ playFocus: boolean;
  paused: boolean;
  imagesUrl: {
    id: string;
@@ -32,7 +33,7 @@ const windowWidth = Dimensions.get("window").width;
 const windowHeight =  Dimensions.get("window").width;
 const DIMENSIONS = Dimensions.get("window").height < 700 ? 290 : windowHeight
 
-export function ImageSlider({imagesUrl, paused}: Props){
+export function ImageSlider({imagesUrl, paused, playFocus}: Props){
   const [imageIndex, setimageIndex] = useState(0);
   const video = useRef(null)
 
@@ -41,6 +42,7 @@ export function ImageSlider({imagesUrl, paused}: Props){
     const index = info.viewableItems[0].index!
     setimageIndex(index)
   })
+  console.log(playFocus)
 
   return (
     <Container>
@@ -49,7 +51,7 @@ export function ImageSlider({imagesUrl, paused}: Props){
         viewabilityConfig={{
           itemVisiblePercentThreshold: 40,
         }}
-        contentContainerStyle={{ marginTop: 25}}
+        contentContainerStyle={{}}
         keyExtractor={item => item.id}
         renderItem={({ item, index}) => (
           <CarImageWrapper>
@@ -80,12 +82,14 @@ export function ImageSlider({imagesUrl, paused}: Props){
 
       <ImageIndexes>
         {
-          imagesUrl.map((item , index) => (
-            <Bullet
-              key={String(item.id)}
-              actived={index !== imageIndex}
-            />
-          ))
+          imagesUrl ?
+            imagesUrl.map((item , index) => (
+              <Bullet
+                key={String(item.id)}
+                actived={index !== imageIndex}
+              />
+            )) :
+            <ActivityIndicator/>
         }
       </ImageIndexes>
     </Container>

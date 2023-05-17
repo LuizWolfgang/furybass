@@ -1,4 +1,6 @@
 import React from 'react';
+import { ActivityIndicator } from 'react-native';
+
 import {
   Container,
   CarrouselView,
@@ -13,15 +15,21 @@ import {
 import { ImageSlider } from '../ImageSlider';
 import { useNavigation } from '@react-navigation/native';
 
+
 type CardProps = {
     data: any;
     paused: boolean;
+    playFocus: boolean;
 }
 type authScreenProps = {
     [x: string]: any;
    }
 
-export function CardCars({ data , paused}: CardProps){
+export function CardCars({ data , paused, playFocus}: CardProps){
+  console.log('CardCars', data);
+  if(!data){
+    return <ActivityIndicator/>
+  }
   const navigation = useNavigation<authScreenProps>();
   return (
     <Container>
@@ -31,6 +39,7 @@ export function CardCars({ data , paused}: CardProps){
             data.media
           }
           paused={paused}
+          playFocus={playFocus}
         />
       </CarrouselView>
       <InfoCars>
@@ -44,7 +53,7 @@ export function CardCars({ data , paused}: CardProps){
             km: {data.km}
         </Km>
       </InfoCars>
-      <Details onPress={() => navigation.navigate('CarDetails')}>
+      <Details onPress={() => navigation.navigate('CarDetails', { data })}>
         <TitleDetails>
             ver mais
         </TitleDetails>
