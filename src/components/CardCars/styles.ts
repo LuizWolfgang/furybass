@@ -15,7 +15,6 @@ export const Container = styled.View`
 export const CarrouselView = styled.View`
   height: ${DIMENSIONS < 700 ? 300 : 400}px;
   justify-content: flex-end;
-
  `
 export const InfoCars = styled.View`
   background-color: ${({ theme }) => theme.colors.header};

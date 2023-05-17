@@ -19,7 +19,7 @@ import {
 } from './styles';
 
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { useNavigation } from '@react-navigation/native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 
 import { CardCars } from '../../components/CardCars';
 
@@ -33,6 +33,7 @@ const boxHeight = windowHeight / windowPlatform
 export function DashboardCars(){
   const [loading, setLoading] = useState(true);
   const [filteredData, setFilteredData] = useState(data);
+  const [playFocus, setPlayFocus] = useState(true)
 
   const filterData = (searchText) => {
     const newData = data.filter(item => {
@@ -45,6 +46,10 @@ export function DashboardCars(){
 
   console.log(filteredData.length)
   const navigation = useNavigation();
+
+  useFocusEffect(() => {
+    setPlayFocus(false);
+  },)
 
   return (
     <Container>
@@ -74,7 +79,7 @@ export function DashboardCars(){
                 <FlatList
                   data={filteredData}
                   onScroll={ev => {
-                    setOffsetY(ev.nativeEvent.contentOffset.y);
+                    setOffsetY(ev.nativeEvent.contentOffset.y)
                   }}
                   keyExtractor={item => item.id}
                   renderItem={({ index, item }) => (
@@ -88,6 +93,7 @@ export function DashboardCars(){
                                   <CardCars
                                     data={item}
                                     paused={false}
+                                    playFocus={playFocus}
                                   />
                                 </ContentCars>
                                 :
@@ -95,6 +101,7 @@ export function DashboardCars(){
                                   <CardCars
                                     data={item}
                                     paused={true}
+                                    playFocus={playFocus}
                                   />
                                 </ContentCars>
                             }
