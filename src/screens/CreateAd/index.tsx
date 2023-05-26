@@ -57,8 +57,6 @@ export function CreateAd(){
       quality: 1,
     });
 
-    console.log('AAAA', result.assets);
-
     if (!result.canceled) {
       setImages(images.concat(result.assets));
     }
