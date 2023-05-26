@@ -2,7 +2,6 @@ import { Dimensions, StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
 
 const DIMENSIONS = Dimensions.get("screen").height
-console.log(DIMENSIONS)
 export const Container = styled.View`
     justify-content:center ;
     align-items: center;

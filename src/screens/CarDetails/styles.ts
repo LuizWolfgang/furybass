@@ -10,11 +10,11 @@ export const Container = styled.View`
 `;
 
 export const ContentIcon = styled.View`
-  margin-top: ${getStatusBarHeight()}px; ;
+  margin-top: ${getStatusBarHeight() + 10}px; ;
   background-color: ${({ theme }) => theme.colors.header};
   justify-content: center;
 
-  height:50px ;
+  height:60px ;
 
 `
 export const TouchIcon = styled.TouchableOpacity`
@@ -27,7 +27,7 @@ export const CarrouselView = styled.View`
 
  `
 export const ContentTitle = styled.View`
- margin-top: 10px;
+ margin-top: 28px;
  background-color: ${({ theme}) => theme.colors.header};
  align-items: center;
  justify-content:center;

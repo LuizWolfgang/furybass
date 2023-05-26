@@ -1,46 +1,23 @@
 
-// import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-// import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-// import { StackRoutes } from './stack.routes';
-// import { useTheme } from 'styled-components';
-// import { Platform } from 'react-native';
-
-
-// const Tab = createMaterialBottomTabNavigator();
-
-// type TabRoutes = {
-//     signIn: undefined;
-//     signUp: undefined
-//   }
-
-// export type AuthNavigatorRoutesProps =  NativeStackNavigationProp<TabRoutes>
-
-// export function TabRoutes() {
-//   return (
-//     <Tab.Navigator
-//       screenOptions={{
-//         tabBarLabelStyle: { fontSize: 12 },
-//         tabBarItemStyle: { width: 300 },
-//         tabBarStyle: { backgroundColor: 'powderblue' },
-//       }}
-//     >
-//       <Tab.Screen name="Home" component={StackRoutes} />
-//       <Tab.Screen name="oi" component={StackRoutes} />
-//       <Tab.Screen name="rvhau" component={StackRoutes} />
-//     </Tab.Navigator>
-//   );
-// }
-
-
 import { createBottomTabNavigator, BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
-import { AntDesign } from '@expo/vector-icons';
 import { Platform } from 'react-native';
-import { StackRoutes } from './stack.routes';
-import { SignIn } from '../screens/SignIn';
-import { ButtonNewSale } from '../components/ButtonNewSale';
+
 import theme from '../styles/theme';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+
+import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+
+import { StackRoutes } from './stack.routes';
+
+import { SignIn } from '../screens/SignIn';
+import { CreateAd } from '../screens/CreateAd';
+
+import { ButtonNewSale } from '../components/ButtonNewSale';
+
+
+
+
 
 
 
@@ -96,7 +73,7 @@ export function TabRoutes() {
 
       <Screen
         name="CriarAnuncio"
-        component={SignIn}
+        component={CreateAd}
         options={{
           tabBarLabel: () => null,
           tabBarIcon: ({ focused ,color, size }) => (

@@ -44,7 +44,6 @@ export function DashboardCars(){
     setFilteredData(newData);
   }
 
-  console.log(filteredData.length)
   const navigation = useNavigation();
 
   useFocusEffect(() => {

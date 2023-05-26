@@ -26,7 +26,6 @@ type authScreenProps = {
    }
 
 export function CardCars({ data , paused, playFocus}: CardProps){
-  console.log('CardCars', data);
   if(!data){
     return <ActivityIndicator/>
   }
