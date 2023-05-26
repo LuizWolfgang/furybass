@@ -38,7 +38,7 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <StatusBar
         barStyle="light-content"
-        backgroundColor="transparent"
+        backgroundColor="white"
         translucent
       />
       <Routes />

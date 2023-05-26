@@ -42,7 +42,6 @@ export function ImageSlider({imagesUrl, paused, playFocus}: Props){
     const index = info.viewableItems[0].index!
     setimageIndex(index)
   })
-  console.log(playFocus)
 
   return (
     <Container>

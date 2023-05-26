@@ -8,7 +8,7 @@ export function AppRoutes() {
   const dimensions = useWindowDimensions();
   return (
     <Drawer.Navigator
-      initialRouteName='TabNaigation'
+      initialRouteName='TabNavigation'
       screenOptions={{
         drawerType: dimensions.width >= 768 ? 'permanent' : 'front',
         drawerPosition: 'right'

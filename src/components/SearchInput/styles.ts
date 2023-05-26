@@ -2,12 +2,12 @@ import styled from 'styled-components/native';
 import { Ionicons } from '@expo/vector-icons';
 
 export const Container = styled.View`
-  flex-direction: row;
-  align-items: center;
-  background-color: #f5f5f5;
-  padding: 4px;
-  width: 85%;
-  border-radius: 10px;
+    flex-direction: row;
+    align-items: center;
+    background-color: #f5f5f5;
+    padding: 4px;
+    width: 85%;
+    border-radius: 10px;
 `;
 
 export const ContentSearch = styled.View`

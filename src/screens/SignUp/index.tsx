@@ -83,7 +83,7 @@ export function SignUp(){
           <Image
             source={BackgroundImg}
             defaultSource={BackgroundImg}
-            alt="Pessoas treinando"
+            alt="Image Background"
             resizeMode="contain"
             position="absolute"
           />

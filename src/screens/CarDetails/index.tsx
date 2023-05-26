@@ -1,13 +1,10 @@
 import React, { useEffect } from 'react';
-import { TouchableOpacity } from 'react-native';
-
 import theme from '../../styles/theme';
 
 import {
   Container,
   ContentIcon,
   TouchIcon,
-  TitleFuryBass,
   CarrouselView,
   ContentInfoCar,
   ContentTitle,
@@ -36,7 +33,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { ImageSlider } from '../../components/ImageSlider';
 import { ScrollView } from 'react-native-gesture-handler';
 
-import Animated, { FlipInYRight, interpolate, useAnimatedStyle, useSharedValue } from 'react-native-reanimated';
+import Animated, { FlipInYRight } from 'react-native-reanimated';
 
 
 type Params = {
@@ -46,18 +43,7 @@ type Params = {
 export function CarDetails(){
   const route = useRoute()
   const { data } = route.params as Params;
-  const shake = useSharedValue(0);
   const navigation = useNavigation();
-
-  const shakeStyleAnimated = useAnimatedStyle(() => {
-    return {
-      transform: [{ translateX: interpolate(
-        shake.value,
-        [0, 0.5, 1, 1.5, 2, 2.5, 0],
-        [0, -15, 0, 15, 0, -15, 0],
-      ) }]
-    }
-  })
 
   return (
     <Container>
@@ -85,7 +71,7 @@ export function CarDetails(){
         <ContentInfoCar>
 
           <ContentInfoYear>
-            <YearInfo>Ano:</YearInfo>
+            <YearInfo>Ano</YearInfo>
             <Year>{data.year}</Year>
           </ContentInfoYear>
 
@@ -96,7 +82,7 @@ export function CarDetails(){
           </Animated.View>
 
           <ContentInfoPrice>
-            <PriceInfo>Preço:</PriceInfo>
+            <PriceInfo>Preço</PriceInfo>
             <Price>{data.price}</Price>
           </ContentInfoPrice>
 
