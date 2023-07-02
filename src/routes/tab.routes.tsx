@@ -58,6 +58,7 @@ export function TabRoutes() {
         name="Carros"
         component={StackRoutes}
         options={{
+          tabBarHideOnKeyboard:true,
           tabBarIcon: ({ focused ,color }) => (
             <Ionicons name="car-sport" size={24} color={focused ? "white" : "black"} />
           )
@@ -66,6 +67,7 @@ export function TabRoutes() {
         name="Produtos"
         component={SignIn}
         options={{
+          tabBarHideOnKeyboard:true,
           tabBarIcon: ({ focused, color }) => (
             <Ionicons name="ios-musical-notes-sharp" size={24} color={focused ? "white" : "black"} />
           )
@@ -75,9 +77,10 @@ export function TabRoutes() {
         name="CriarAnuncio"
         component={CreateAd}
         options={{
+          tabBarStyle: { display: 'none' },
           tabBarLabel: () => null,
           tabBarIcon: ({ focused ,color, size }) => (
-            <ButtonNewSale size={size} color={color} focused={focused}/>
+            <ButtonNewSale size={size} color={focused ? "black" : "white"} focused={focused}/>
           ),
         }}/>
 
@@ -85,6 +88,7 @@ export function TabRoutes() {
         name="Anuncios"
         component={SignIn}
         options={{
+          tabBarHideOnKeyboard:true,
           tabBarIcon: ({ focused, color }) => (
             <AntDesign name="tags" size={24} color={focused ? "white" : "black"} />
           )
@@ -94,6 +98,7 @@ export function TabRoutes() {
         name="Eventos"
         component={SignIn}
         options={{
+          tabBarHideOnKeyboard:true,
           tabBarIcon: ({ focused, color }) => (
             <MaterialCommunityIcons name="party-popper" size={24} color={focused ? "white" : "black"} />
           )

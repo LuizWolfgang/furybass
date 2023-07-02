@@ -1,6 +1,9 @@
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 import styled from 'styled-components/native';
 
+type ContentAddImage = {
+    length: number;
+}
 
 export const Container = styled.View`
     flex:1;
@@ -46,10 +49,11 @@ export const TitleInfoMedia = styled.Text`
     font-size: 16px;
 `
 export const TextInfoImage = styled.Text`
-    margin-top: 8px;
+    margin-top: 20px;
     font-family: ${({ theme }) => theme.fonts.primary_500};
     color: ${({ theme }) => theme.colors.background_secondary};
     font-size: 14px;
+    text-align: center;
 `
 
 export const ContentImageSlide = styled.View`
@@ -60,9 +64,9 @@ export const ContentImageSlide = styled.View`
 
 `
 
-export const ContentAddImage = styled.View`
+export const ContentAddImage = styled.View<ContentAddImage>`
     margin-top: 15px;
-    background-color: ${({ theme, length }) => length === 0 ? theme.colors.input : theme.colors.header } ;
+    background-color: ${({ theme, length }) => length === 0 ? theme.colors.input : theme.colors.header} ;
     height: 200px;
     width: 100%;
 `
@@ -77,21 +81,19 @@ export const CardAddImage = styled.TouchableOpacity`
     align-items: center;
 `
 export const ContentTextAddImage = styled.View`
-flex-direction: row;
-    background-color: ${({ theme }) => theme.colors.header};
-    justify-content: space-between;
-    align-items: center ;
-    width: 100%;
-    margin-top:15px;
+
+    background-color: ${({ theme }) => theme.colors.success};
 `
 export const  CardTextAddImage = styled.TouchableOpacity`
-    justify-content: center ;
-    align-items: center ;
+    background-color:${({ theme }) => theme.colors.header};
+    flex-direction: row;
+    gap: 8px;
+
+    margin-top: 8px;
 
 `
-export const ContentIcons = styled.View`
+export const ContentIcons = styled.View``
 
-`
 export const TextAddImage = styled.Text`
     margin-top: 3px;
     font-family: ${({ theme }) => theme.fonts.primary_500};
@@ -101,7 +103,8 @@ export const TextAddImage = styled.Text`
 
 export const ContentTotal = styled.View`
     background-color:${({ theme }) => theme.colors.header} ;
-    height: 50px;
+    height: 40px;
+    justify-content: flex-start;
 `
 export const TextTotal = styled.Text`
     font-family: ${({ theme }) => theme.fonts.primary_500};
@@ -109,10 +112,26 @@ export const TextTotal = styled.Text`
     font-size: 12px;
 `
 
+export const ImageIndexes = styled.View`
+  flex-direction: row;
+  justify-content: center ;
+  align-items: center;
 
-// export const TouchAddImage = styled.TouchableOpacity`
-//    align-items: center;
-//    justify-content: center;
+  margin-top: 10px;
+`
 
-// `
+export const Form = styled.View`
+  margin: 55px 0px;
 
+  width: 100%;
+`
+export const Errors = styled.Text`
+  font-size: 15px;
+  font-family: ${({ theme }) => theme.fonts.secondary_600};
+  color: ${({ theme }) => theme.colors.background_secondary};
+
+  margin-bottom: 24px;
+`
+export const Footer = styled.View`
+  width: 100%
+`

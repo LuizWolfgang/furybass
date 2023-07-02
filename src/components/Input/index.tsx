@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { TextInputProps } from 'react-native';
 import { Feather } from '@expo/vector-icons'
-import theme from '../../styles/theme'
+// import { BottomSheet } from 'react-native-btr';
 
 import {
   Container,
@@ -15,10 +15,12 @@ interface InputProps extends TextInputProps {
     iconName?: React.ComponentProps<typeof Feather>['name'];
     value?:string;
     error?: string;
+    height?: boolean;
 }
 export function Input({
   iconName,
   value,
+  height,
   ...rest
 }: InputProps){
 
@@ -35,7 +37,7 @@ export function Input({
   }
 
   return (
-    <Container>
+    <Container heightDescription={height}>
       {/* <IconContainer
              isFocused={isFocused}
         >
@@ -50,8 +52,9 @@ export function Input({
         onFocus={handleInputFocus}
         onBlur={handleInputBlur}
         isFocused={isFocused}
+        multiline
+        style={{ textAlignVertical: 'top'}}
         {...rest}/>
-
     </Container>
   );
 }

@@ -3,14 +3,16 @@ import { TextInput } from 'react-native'
 import styled, { css } from 'styled-components/native';
 
 interface Props{
-  isFocused: boolean;
+  isFocused?: boolean;
+  heightDescription?: boolean;
 }
 
-export const Container = styled.View`
+export const Container = styled.View<Props>`
   flex-direction: row;
   width:100%;
   margin-bottom: 8px;
   height:45px;
+  height: ${({ heightDescription }) => !heightDescription ? 45 : 80}px;
   border-radius: 10px;
   margin-bottom:15px;
 `;
@@ -38,19 +40,17 @@ export const IconContainer = styled.View<Props>`
 export const InputText = styled(TextInput)<Props>`
   flex:1;
   border-radius: 10px;
-  background-color: ${({ theme}) => theme.colors.input};
-  color: ${({ theme }) => theme.colors.text};
-  font-family: ${({ theme }) => theme.fonts.primary_400};
+  background-color: ${({ theme}) => theme.colors.background_secondary};
+
+  font-family: ${({ theme }) => theme.fonts.secondary_500};
   font-size: ${RFValue(15)}px;
 
-  padding: 0 23px;
-
+  padding: 10px 10px;
   ${({ isFocused, theme }) => isFocused && css `
   border-bottom-width: 2px;
-  border-bottom-color: ${theme.colors.main};
+  border-bottom-color: ${theme.colors.success};
 
   `};
-
 `;
 
 export const ErrorMessasge = styled.Text`

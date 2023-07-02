@@ -50,7 +50,6 @@ export function ImageSlider({imagesUrl, paused, playFocus}: Props){
         viewabilityConfig={{
           itemVisiblePercentThreshold: 40,
         }}
-        contentContainerStyle={{}}
         keyExtractor={item => item.id}
         renderItem={({ item, index}) => (
           <CarImageWrapper>
@@ -64,7 +63,7 @@ export function ImageSlider({imagesUrl, paused, playFocus}: Props){
                   ref={video}
                   style={styles.video}
                   source={item.url}
-                  shouldPlay={imageIndex === index && !paused}
+                  shouldPlay={playFocus && imageIndex === index && !paused}
                   volume={1}
                   useNativeControls
                   resizeMode={ResizeMode.COVER}

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Text, FlatList, Platform } from 'react-native';
+import React, { useCallback, useEffect, useState } from 'react';
+import { Text, FlatList, Platform, StatusBar } from 'react-native';
 import { Dimensions, View } from "react-native";
 import Ionicons from '@expo/vector-icons/Ionicons';
 
@@ -33,8 +33,11 @@ const boxHeight = windowHeight / windowPlatform
 export function DashboardCars(){
   const [loading, setLoading] = useState(true);
   const [filteredData, setFilteredData] = useState(data);
-  const [playFocus, setPlayFocus] = useState(true)
+  const [isPlaying, setIsPlaying] = useState(true)
 
+  const navigation = useNavigation();
+
+  //filter flat list
   const filterData = (searchText) => {
     const newData = data.filter(item => {
       const itemData = item.name.toUpperCase();
@@ -44,11 +47,15 @@ export function DashboardCars(){
     setFilteredData(newData);
   }
 
-  const navigation = useNavigation();
-
-  useFocusEffect(() => {
-    setPlayFocus(false);
-  },)
+  //focus screen ? play Video : Not play
+  useFocusEffect(
+    useCallback(() => {
+      setIsPlaying(true);
+      return () => {
+        setIsPlaying(false);
+      };
+    }, [])
+  );
 
   return (
     <Container>
@@ -92,7 +99,7 @@ export function DashboardCars(){
                                   <CardCars
                                     data={item}
                                     paused={false}
-                                    playFocus={playFocus}
+                                    playFocus={isPlaying}
                                   />
                                 </ContentCars>
                                 :
@@ -100,7 +107,7 @@ export function DashboardCars(){
                                   <CardCars
                                     data={item}
                                     paused={true}
-                                    playFocus={playFocus}
+                                    playFocus={isPlaying}
                                   />
                                 </ContentCars>
                             }
@@ -115,7 +122,7 @@ export function DashboardCars(){
           </Content>
           :
           <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-            <Text style={{ color: 'white', fontSize: 18 }}> Nenhum anúncio encontrado</Text>
+            <Text style={{ color: 'white', fontSize: 18 }}>Nenhum anúncio encontrado</Text>
           </View>
       }
     </Container>

@@ -67,11 +67,10 @@ export function SignUp(){
 
   return (
     <ScrollView
-      contentContainerStyle={{ flexGrow: Platform.OS === 'ios' ? 0 : 1,}}
+      contentContainerStyle={{ flexGrow: Platform.OS === 'ios' ? 0 : 1}}
       showsVerticalScrollIndicator={false}
       automaticallyAdjustKeyboardInsets
     >
-      {/* <KeyboardAvoidingView enabled behavior="height"> */}
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <Container>
           <StatusBar
