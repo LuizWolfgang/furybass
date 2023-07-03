@@ -6,7 +6,7 @@ import {
 
 export function ButtonNewSale({ focused, size, color}){
   return (
-    <Container>
+    <Container focused={focused}>
       <Entypo name="plus" color={color} size={size}/>
     </Container>
   );

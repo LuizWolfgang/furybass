@@ -66,7 +66,7 @@ export function SignIn(){
 
   return (
     <ScrollView
-      contentContainerStyle={{ flexGrow: Platform.OS === 'ios' ? 0 : 1,}}
+      contentContainerStyle={{ flexGrow: Platform.OS === 'ios' ? 0 : 1}}
       showsVerticalScrollIndicator={false}
       automaticallyAdjustKeyboardInsets
     >

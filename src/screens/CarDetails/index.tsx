@@ -104,7 +104,5 @@ export function CarDetails(){
         </ContentAcessories>
       </ScrollView>
     </Container>
-
-
   );
 }

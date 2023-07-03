@@ -1,5 +1,9 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
+import {
+  BottomSheetModal,
+  BottomSheetModalProvider,
+} from '@gorhom/bottom-sheet';
 
 import {
   useFonts,
@@ -35,13 +39,17 @@ export default function App() {
   }
 
   return (
+
     <ThemeProvider theme={theme}>
-      <StatusBar
-        barStyle="light-content"
-        backgroundColor="white"
-        translucent
-      />
-      <Routes />
+      <BottomSheetModalProvider>
+        <StatusBar
+          barStyle="light-content"
+          backgroundColor="black"
+          translucent
+        />
+        <Routes />
+      </BottomSheetModalProvider>
+
     </ThemeProvider>
   )
 }
