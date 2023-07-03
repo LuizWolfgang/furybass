@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useRef, useState, StyleSheet } from 'react';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
 import { Image, TouchableOpacity, View, FlatList, Dimensions, Platform, ScrollView, TouchableWithoutFeedback, Keyboard, Text } from 'react-native';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 
@@ -39,6 +39,7 @@ import { Input } from '../../components/Input';
 
 import { Button } from '../../components/Button';
 import { BottomSheetModal, BottomSheetModalProvider } from '@gorhom/bottom-sheet';
+import { ContentModal } from '../../components/ContentModal';
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight =  Dimensions.get("window").width;
@@ -103,6 +104,7 @@ export function CreateAd(){
   // callbacks
   const handlePresentModalPress = useCallback(() => {
     bottomSheetModalRef.current?.present();
+    console.log(bottomSheetModalRef.current)
   }, []);
   const handleSheetChanges = useCallback((index: number) => {
     console.log('handleSheetChanges', index);
@@ -255,27 +257,12 @@ export function CreateAd(){
             )}
           />
           {errors.password && <Errors>{errors.password.message}</Errors>}
-          {/*
-          <View style={{  }}>
-            <Button title="Show modal" onPress={toggleModal} />
 
-            <Modal
-              isVisible={isModalVisible}
-              swipeDirection="down"
-              style={{ justifyContent: 'flex-end' }}
-            >
-              <View style={{ backgroundColor: 'white', height: 300}}>
-                <Text>Escolha a categoria do produto</Text>
-
-                <Button title="Hide modal" onPress={toggleModal} />
-              </View>
-            </Modal>
-          </View> */}
-
+          {/* MODAL */}
           <View>
             <Button
               onPress={handlePresentModalPress}
-              title="Present Modal"
+              title="Selecione a categoria"
               color="black"
             />
             <BottomSheetModal
@@ -285,12 +272,11 @@ export function CreateAd(){
               onChange={handleSheetChanges}
             >
               <View>
-                <Text>Selecione a categoria</Text>
+                <ContentModal/>
               </View>
             </BottomSheetModal>
           </View>
         </Form>
-
 
         <Footer>
           <Button
