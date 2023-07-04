@@ -1,10 +1,10 @@
 # furybass
 ![Screen Shot 2023-07-04 at 09 47 37](https://github.com/LuizWolfgang/furybass/assets/74063154/f177a5ad-08b9-4dfd-8015-365a084d2926)
 ![Screen Shot 2023-07-04 at 09 47 48](https://github.com/LuizWolfgang/furybass/assets/74063154/dcfc3841-c3bf-44a9-9dc2-d0020eb8e7b1)
-![Screen Shot 2023-07-04 at 09 48 14](https://github.com/LuizWolfgang/furybass/assets/74063154/c6af2179-d5dd-4d6c-8905-dca2600fcf5e)
-![Screen Shot 2023-07-04 at 09 48 23](https://github.com/LuizWolfgang/furybass/assets/74063154/1a1b9c5a-4637-4d96-9688-49915cfaac1e)
-![Screen Shot 2023-07-04 at 09 48 50](https://github.com/LuizWolfgang/furybass/assets/74063154/c75d7b09-55fe-45dd-9ef4-7611f256e9e0)
-![Screen Shot 2023-07-04 at 09 48 31](https://github.com/LuizWolfgang/furybass/assets/74063154/e6ce9a68-6490-405d-b9b6-9ed1a0458c70)
+![Screen Shot 2023-07-04 at 10 02 54](https://github.com/LuizWolfgang/furybass/assets/74063154/8c81cc9d-0960-4cf5-80bb-9c87eb448700)
+![Screen Shot 2023-07-04 at 10 03 05](https://github.com/LuizWolfgang/furybass/assets/74063154/50f45400-5727-412b-b779-f37bf0fd3ad8)
+![Screen Shot 2023-07-04 at 10 04 06](https://github.com/LuizWolfgang/furybass/assets/74063154/b0dbd22d-9f86-42c3-8527-5ca5e7fb960f)
+![Screen Shot 2023-07-04 at 10 03 18](https://github.com/LuizWolfgang/furybass/assets/74063154/74636912-42a9-476c-846a-11d21bf7a75d)
 
 
 <h3 align="center">furybass</h3>
