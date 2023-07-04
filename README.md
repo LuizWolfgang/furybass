@@ -15,7 +15,6 @@
 ## 📝 Tabela de conteúdo
 
 - [Sobre](#about)
-- [Ferramentas usadas](#built_using)
 
 ## 🧐 Sobre <a name = "about"></a>
 
@@ -27,7 +26,7 @@ a furybass ainda esta em fase de desenvolvimento e logo será apresentada no mer
 
 ### Projeto e prototipo de minha autoria
 
-### Tecnologias
+- [Ferramentas usadas](#built_using)
 - React native
 - Typescript
 - Expo Bare
