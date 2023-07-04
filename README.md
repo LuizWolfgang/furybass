@@ -24,9 +24,9 @@ Nossos usuarios podem cadastrar a venda de seus carros modificados, seus produto
 a furybass ainda esta em fase de desenvolvimento e logo será apresentada no mercado 
  
 
-### Projeto e prototipo de minha autoria
+### Projeto e protótipo de minha autoria
 
-- [Ferramentas usadas](#built_using)
+[Ferramentas usadas](#built_using)
 - React native
 - Typescript
 - Expo Bare
