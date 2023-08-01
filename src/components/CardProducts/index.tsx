@@ -1,31 +1,29 @@
-import React from 'react';
 import { ActivityIndicator } from 'react-native';
 
 import {
   Container,
   CarrouselView,
-  InfoCars,
-  UserGreeting,
+  InfoProducts,
+  Product,
   SubTitle,
-  Km,
   Details,
   TitleDetails
 } from './styles';
 
-import { ImageSliderCars } from '../ImageSliderCars';
 import { useNavigation } from '@react-navigation/native';
-
+import { ImageSliderProducts } from '../ImageSliderProducts';
 
 type CardProps = {
     data: any;
     paused: boolean;
     playFocus: boolean;
 }
+
 type authScreenProps = {
     [x: string]: any;
    }
 
-export function CardCars({ data , paused, playFocus}: CardProps){
+export function CardProducts({ data , paused, playFocus}: CardProps){
   if(!data){
     return <ActivityIndicator/>
   }
@@ -33,7 +31,7 @@ export function CardCars({ data , paused, playFocus}: CardProps){
   return (
     <Container>
       <CarrouselView>
-        <ImageSliderCars
+        <ImageSliderProducts
           imagesUrl={
             data.media
           }
@@ -41,18 +39,15 @@ export function CardCars({ data , paused, playFocus}: CardProps){
           playFocus={playFocus}
         />
       </CarrouselView>
-      <InfoCars>
-        <UserGreeting>
+      <InfoProducts>
+        <Product>
           {data.name}
-        </UserGreeting>
+        </Product>
         <SubTitle>
             R$: {data.price}
         </SubTitle>
-        <Km>
-            km: {data.km}
-        </Km>
-      </InfoCars>
-      <Details onPress={() => navigation.navigate('CarDetails', { data, playFocus })}>
+      </InfoProducts>
+      <Details onPress={() => navigation.navigate('productDetails', { data })}>
         <TitleDetails>
             ver mais
         </TitleDetails>

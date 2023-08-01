@@ -21,7 +21,7 @@ import {
 import theme from './src/styles/theme';
 
 import { SignUp } from './src/screens/SignUp';
-import { SignIn } from './src/screens/SignIn';
+import { SignIn } from './src/screens/Unauthenticated/SignIn';
 import { ActivityIndicator, StatusBar } from 'react-native';
 import { Routes } from './src/routes';
 

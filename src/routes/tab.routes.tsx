@@ -8,24 +8,23 @@ import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-import { StackRoutes } from './stack.routes';
+import { StackCars } from './stackCars.routes';
+import { StackProducts } from './stackProducts.routes'
 
-import { SignIn } from '../screens/SignIn';
-import { CreateAd } from '../screens/CreateAd';
+import { SignIn } from '../screens/Unauthenticated/SignIn';
+import { CreateAd } from '../screens/Authenticated/CreateAd';
 
 import { ButtonNewSale } from '../components/ButtonNewSale';
-
-
-
-
-
+import { StackCreatedAdCategory } from './stackCreatedAdCategory.routes';
 
 
 type AppRoutes = {
-  home: undefined;
-  exercise: { exerciseId: string};
-  profile: undefined;
-  history: undefined;
+  Carros: undefined;
+  exercise: undefined;
+  Produtos: undefined;
+  CriarAnuncio: undefined;
+  Anuncios: undefined;
+  Eventos:undefined;
 }
 
 export type AppNavigatorRouterProps = BottomTabNavigationProp<AppRoutes>
@@ -56,7 +55,7 @@ export function TabRoutes() {
     }}>
       <Screen
         name="Carros"
-        component={StackRoutes}
+        component={StackCars}
         options={{
           tabBarHideOnKeyboard:true,
           tabBarIcon: ({ focused ,color }) => (
@@ -65,21 +64,21 @@ export function TabRoutes() {
         }}/>
       <Screen
         name="Produtos"
-        component={SignIn}
+        component={StackProducts}
         options={{
           tabBarHideOnKeyboard:true,
-          tabBarIcon: ({ focused, color }) => (
+          tabBarIcon: ({ focused }) => (
             <Ionicons name="ios-musical-notes-sharp" size={24} color={focused ? "white" : "black"} />
           )
         }}/>
 
       <Screen
         name="CriarAnuncio"
-        component={CreateAd}
+        component={StackCreatedAdCategory}
         options={{
           tabBarStyle: { display: 'none' },
           tabBarLabel: () => null,
-          tabBarIcon: ({ focused ,color, size }) => (
+          tabBarIcon: ({ focused , size }) => (
             <ButtonNewSale size={size} color={focused ? "black" : "white"} focused={focused}/>
           ),
         }}/>
@@ -89,7 +88,7 @@ export function TabRoutes() {
         component={SignIn}
         options={{
           tabBarHideOnKeyboard:true,
-          tabBarIcon: ({ focused, color }) => (
+          tabBarIcon: ({ focused }) => (
             <AntDesign name="tags" size={24} color={focused ? "white" : "black"} />
           )
         }}/>
@@ -99,7 +98,7 @@ export function TabRoutes() {
         component={SignIn}
         options={{
           tabBarHideOnKeyboard:true,
-          tabBarIcon: ({ focused, color }) => (
+          tabBarIcon: ({ focused }) => (
             <MaterialCommunityIcons name="party-popper" size={24} color={focused ? "white" : "black"} />
           )
         }}/>
