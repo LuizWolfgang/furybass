@@ -11,8 +11,7 @@ export const Container = styled.View<Props>`
   flex-direction: row;
   width:100%;
   margin-bottom: 8px;
-  height:45px;
-  height: ${({ heightDescription }) => !heightDescription ? 45 : 80}px;
+  height: ${({ heightDescription }) => !heightDescription ? 45 : 100}px;
   border-radius: 10px;
   margin-bottom:15px;
 `;
