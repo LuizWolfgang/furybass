@@ -30,7 +30,6 @@ export const styles = StyleSheet.create({
     flex: 1,
     width: "100%",
     height: "100%",
-    marginTop: DIMENSIONS > 850 ? 19 : 7,
     justifyContent: "center",
     alignItems: "center",
   },

@@ -58,7 +58,7 @@ export function  ImageSliderProducts({imagesUrl, paused, playFocus}: Props){
                 source={{ uri: item.url }}
               />
               :
-              <View style={{ width: windowWidth, height: DIMENSIONS}}>
+              <View style={{ width: windowWidth, height: DIMENSIONS, position: "relative" }}>
                 <Video
                   ref={video}
                   style={styles.video}

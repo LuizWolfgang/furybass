@@ -1,5 +1,6 @@
 import React from 'react';
 import { FlatList } from 'react-native-gesture-handler';
+import { Entypo } from '@expo/vector-icons';
 
 import {
   Container,
@@ -7,6 +8,8 @@ import {
   Title,
   Category,
   Name,
+  TouchIcon,
+  ContentTitle,
 } from './styles';
 import { useNavigation, useRoute } from '@react-navigation/native';
 
@@ -36,7 +39,12 @@ export function SubCategorySelect(){
   return (
     <Container>
       <Header>
-        <Title>{item.name}</Title>
+        <TouchIcon onPress={() => navigation.goBack()} >
+          <Entypo name="chevron-with-circle-left" size={24} color="white" />
+        </TouchIcon>
+        <ContentTitle>
+          <Title>{item.name}</Title>
+        </ContentTitle>
       </Header>
 
       <FlatList

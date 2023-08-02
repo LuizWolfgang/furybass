@@ -32,7 +32,7 @@ import { useFocusScreen } from "../../../hooks/useFocusScreen";
 
 //Dimensions
 const { height: windowHeight } = Dimensions.get("window");
-const windowPlatform = Platform.OS === "ios" ? 1.7 : 1.5;
+const windowPlatform = Platform.OS === "ios" ? 1.5 : 1.33;
 const boxHeight = windowHeight / windowPlatform;
 
 export function DashboardProducts() {
