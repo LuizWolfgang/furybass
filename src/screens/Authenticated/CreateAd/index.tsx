@@ -97,6 +97,7 @@ export function CreateAd(){
     navigation.navigate("categories")
   }
 
+
   return (
     <Container>
       <TouchableWithoutFeedback>
@@ -230,7 +231,6 @@ export function CreateAd(){
           />
           {errors.password && <Errors>{errors.password.message}</Errors>}
 
-
           <Button
             onPress={handleOpenSelectCategoryModal}
             title={item?.name ? item?.name :  'Selecione a categoria'}
@@ -238,7 +238,6 @@ export function CreateAd(){
           />
 
         </Form>
-
 
         <Footer>
           <Button

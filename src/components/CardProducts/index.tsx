@@ -27,6 +27,8 @@ export function CardProducts({ data , paused, playFocus}: CardProps){
   if(!data){
     return <ActivityIndicator/>
   }
+
+  console.log('aaaa', data)
   const navigation = useNavigation<authScreenProps>();
   return (
     <Container>
@@ -47,7 +49,7 @@ export function CardProducts({ data , paused, playFocus}: CardProps){
             R$: {data.price}
         </SubTitle>
       </InfoProducts>
-      <Details onPress={() => navigation.navigate('productDetails', { data })}>
+      <Details onPress={() => navigation.navigate('productDetails', { data, playFocus })}>
         <TitleDetails>
             ver mais
         </TitleDetails>

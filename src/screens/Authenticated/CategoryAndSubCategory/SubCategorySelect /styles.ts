@@ -22,15 +22,24 @@ export const Header = styled.View`
     margin-top: ${getStatusBarHeight() + 10}px; ;
     background-color: ${({ theme }) => theme.colors.header};
 
-    justify-content: center;
+    align-items: center;
     flex-direction: row;
     height:60px ;
 `;
 
+export const TouchIcon = styled.TouchableOpacity``
+
+export const ContentTitle = styled.View`
+    background-color: ${({ theme }) => theme.colors.header};
+    width: 85%;
+    justify-content: center;
+    align-items: center;
+
+`
 export const Title = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.primary_400};
+  font-family: ${({ theme }) => theme.fonts.primary_500};
   color: ${({ theme }) => theme.colors.shape};
-  font-size: 18px;
+  font-size: 22px;
 
 `;
 
@@ -53,7 +62,8 @@ export const Icon = styled(Feather)`
 `;
 
 export const Name = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.primary_400};
-  font-size: ${RFValue(14)}px;
+ font-family: ${({ theme }) => theme.fonts.secondary_500};
+  font-size:18px;
+  color: ${({ theme }) => theme.colors.shape_dark};
 `;
 

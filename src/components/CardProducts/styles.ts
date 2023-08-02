@@ -5,14 +5,15 @@ import styled from 'styled-components/native';
 const DIMENSIONS = Dimensions.get("screen").height;
 
 export const Container = styled.View`
-
+  width: 100%;
+  min-height: 340px;
   background-color: ${({ theme}) => theme.colors.header};
   border-radius:10px;
   margin-bottom: 70px ;
 `;
 
 export const CarrouselView = styled.View`
-  height: ${DIMENSIONS < 700 ? 300 : 350}px;
+height: ${DIMENSIONS < 700 ? 300 : 400}px;
   justify-content: flex-end;
  `
 export const InfoProducts = styled.View`

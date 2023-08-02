@@ -44,7 +44,7 @@ type Params = {
 
 export function ProductDetails(){
   const route = useRoute()
-  const { item } = route.params as Params;
+  const { data } = route.params as Params;
 
   const navigation = useNavigation();
   const { isPlaying } = useFocusScreen();

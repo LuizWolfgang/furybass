@@ -10,6 +10,8 @@ import {
   Title,
   Category,
   Name,
+  TouchIcon,
+  ContentTitle,
 } from './styles';
 import { useNavigation } from '@react-navigation/native';
 
@@ -35,7 +37,12 @@ export function CategorySelect(){
   return (
     <Container>
       <Header>
-        <Title>Categoria</Title>
+        <TouchIcon onPress={() => navigation.goBack()} >
+          <Entypo name="chevron-with-circle-left" size={24} color="white" />
+        </TouchIcon>
+        <ContentTitle>
+          <Title>Categoria</Title>
+        </ContentTitle>
       </Header>
       <FlatList
         data={categories}
