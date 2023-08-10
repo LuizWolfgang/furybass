@@ -4,18 +4,17 @@ import { Platform } from 'react-native';
 
 import theme from '../styles/theme';
 
-import { AntDesign } from '@expo/vector-icons';
-import { Ionicons } from '@expo/vector-icons';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { AntDesign, FontAwesome5, Ionicons } from '@expo/vector-icons';
+
 
 import { StackCars } from './stackCars.routes';
 import { StackProducts } from './stackProducts.routes'
 
 import { SignIn } from '../screens/Unauthenticated/SignIn';
-import { CreateAd } from '../screens/Authenticated/CreateAd';
-
 import { ButtonNewSale } from '../components/ButtonNewSale';
-import { StackCreatedAdCategory } from './stackCreatedAdCategory.routes';
+import { StackCreatedAd } from './stackCreatedAd.routes';
+import { StackMyAds } from './stackMyAds.routes';
+import { Profile } from '../screens/Authenticated/Profile';
 
 
 type AppRoutes = {
@@ -24,7 +23,7 @@ type AppRoutes = {
   Produtos: undefined;
   CriarAnuncio: undefined;
   Anuncios: undefined;
-  Eventos:undefined;
+  Perfil:undefined;
 }
 
 export type AppNavigatorRouterProps = BottomTabNavigationProp<AppRoutes>
@@ -46,7 +45,9 @@ export function TabRoutes() {
         paddingTop:6,
       },
       tabBarLabelStyle:{
-        color: '#fefefe'
+        color: '#fefefed4',
+        fontSize: 11,
+        fontWeight: 'bold',
       },
       tabBarBadgeStyle:{
         fontWeight: 'bold',
@@ -59,7 +60,7 @@ export function TabRoutes() {
         options={{
           tabBarHideOnKeyboard:true,
           tabBarIcon: ({ focused ,color }) => (
-            <Ionicons name="car-sport" size={24} color={focused ? "white" : "black"} />
+            <Ionicons name="car-sport" size={24} color={focused ? "#fefefed4" : "black"} />
           )
         }}/>
       <Screen
@@ -68,13 +69,13 @@ export function TabRoutes() {
         options={{
           tabBarHideOnKeyboard:true,
           tabBarIcon: ({ focused }) => (
-            <Ionicons name="ios-musical-notes-sharp" size={24} color={focused ? "white" : "black"} />
+            <Ionicons name="ios-musical-notes-sharp" size={24} color={focused ? "#fefefed4" : "black"} />
           )
         }}/>
 
       <Screen
         name="CriarAnuncio"
-        component={StackCreatedAdCategory}
+        component={StackCreatedAd}
         options={{
           tabBarStyle: { display: 'none' },
           tabBarLabel: () => null,
@@ -85,24 +86,23 @@ export function TabRoutes() {
 
       <Screen
         name="Anuncios"
-        component={SignIn}
+        component={StackMyAds}
         options={{
           tabBarHideOnKeyboard:true,
           tabBarIcon: ({ focused }) => (
-            <AntDesign name="tags" size={24} color={focused ? "white" : "black"} />
+            <AntDesign name="tags" size={24} color={focused ? "#fefefed4" : "black"} />
           )
         }}/>
 
       <Screen
-        name="Eventos"
-        component={SignIn}
+        name="Perfil"
+        component={Profile}
         options={{
           tabBarHideOnKeyboard:true,
           tabBarIcon: ({ focused }) => (
-            <MaterialCommunityIcons name="party-popper" size={24} color={focused ? "white" : "black"} />
+            <FontAwesome5 name="user-alt" size={20} color={focused ? "#fefefed4" : "black"} />
           )
         }}/>
     </Navigator>
   );
 }
-

@@ -3,7 +3,7 @@ import { Feather } from '@expo/vector-icons';
 import styled from 'styled-components/native';
 
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import theme from '../../../../styles/theme';
+import theme from '../../../../../styles/theme';
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 
 
@@ -19,7 +19,7 @@ export const Container = styled(GestureHandlerRootView)`
 
 
 export const Header = styled.View`
-   margin-top: ${getStatusBarHeight() + 10}px; ;
+    margin-top: ${getStatusBarHeight() + 10}px; ;
     background-color: ${({ theme }) => theme.colors.header};
 
     align-items: center;
@@ -51,22 +51,19 @@ export const Category = styled.TouchableOpacity<CategoryProps>`
   align-items: center;
   margin: 10px 0;
   background-color:  ${({ theme }) => theme.colors.success};
-  justify-content: space-between;
+
+  justify-content: center;
+  align-items: center;
 `;
 
+export const Icon = styled(Feather)`
+  font-size: ${RFValue(20)}px;
+  margin-right: 16px;
+`;
 
 export const Name = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.secondary_500};
-  font-size: 18px;
+ font-family: ${({ theme }) => theme.fonts.secondary_500};
+  font-size:18px;
   color: ${({ theme }) => theme.colors.shape_dark};
 `;
-
-export const Separator = styled.View`
-  height: 1px;
-  width: 80%;
-  align-items: center;
-  justify-content: center;
-  background-color:  ${({ theme }) => theme.colors.text};
-`;
-
 

@@ -88,10 +88,10 @@ export function SignIn(){
 
           <Header>
             <Title>
-                    Furybass
+                Furybass
             </Title>
             <SubTitle>
-                    O seu app automotivo
+                O seu app automotivo
             </SubTitle>
           </Header>
 

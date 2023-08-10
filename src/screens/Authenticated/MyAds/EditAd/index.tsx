@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Image, TouchableOpacity, View, FlatList, Dimensions, Platform, ScrollView, TouchableWithoutFeedback, Modal } from 'react-native';
+import { Image, TouchableOpacity, View, FlatList, Dimensions, Platform, ScrollView, TouchableWithoutFeedback, Modal, ActivityIndicator } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 
-import theme from '../../../styles/theme';
+import theme from '../../../../styles/theme';
 import {
   Container,
   ContentTitle,
@@ -33,12 +33,12 @@ import { ResizeMode, Video } from 'expo-av';
 
 import Animated, { FlipOutXDown, ZoomInRight } from 'react-native-reanimated';
 
-import { Bullet } from '../../../components/Bullet';
+import { Bullet } from '../../../../components/Bullet';
 import { Controller, useForm } from 'react-hook-form';
-import { Input } from '../../../components/Input';
+import { Input } from '../../../../components/Input';
 
-import { Button } from '../../../components/Button';
-import { useFocusScreen } from '../../../hooks/useFocusScreen';
+import { Button } from '../../../../components/Button';
+import { useFocusScreen } from '../../../../hooks/useFocusScreen';
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight =  Dimensions.get("window").width;
@@ -49,7 +49,7 @@ type FormDataProps = {
     password: string;
   }
 
-export function CreateAd(){
+export function EditAd(){
   const [images, setImages] = useState([]);
   const [imageIndex, setimageIndex] = useState(0);
 
@@ -119,7 +119,9 @@ export function CreateAd(){
             <Entypo name="chevron-with-circle-left" size={24} color="white" />
           </TouchIcon>
           <ContentTitle>
-            <Title>Criar anúncio</Title>
+            <TouchableOpacity>
+              <Title>Meu anuncio</Title>
+            </TouchableOpacity>
           </ContentTitle>
         </Header>
       </TouchableWithoutFeedback>
@@ -132,11 +134,7 @@ export function CreateAd(){
           {
             images.length === 0 ?
 
-              <CardAddImage onPress={pickImage}>
-                <AntDesign name="addfolder" size={22} color="white"/>
-                <TextAddImage>Incluir arquivos</TextAddImage>
-                <TextInfoImage>Escolha até 6 fotos e 1 video para mostrar o seu produto!</TextInfoImage>
-              </CardAddImage>
+              <ActivityIndicator/>
 
               :
 
@@ -258,9 +256,16 @@ export function CreateAd(){
         <Footer>
           <Button
             enabled
+            color={theme.colors.main}
+            loading={false}
+            title="Excluir anúncio"
+            onPress={handleOpenSelectCategoryModal}
+          />
+          <Button
+            enabled
             color={theme.colors.success}
             loading={false}
-            title="Publicar anuncio"
+            title="Salvar alteraçoes"
             onPress={handleOpenSelectCategoryModal}
           />
         </Footer>

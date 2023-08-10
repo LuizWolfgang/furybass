@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import theme from '../../../styles/theme';
+import theme from '../../../../styles/theme';
 
 import {
   Container,
@@ -30,25 +30,23 @@ import { Ionicons } from '@expo/vector-icons';
 
 
 
-import { ImageSliderCars } from '../../../components/ImageSliderCars';
+import { ImageSliderCars } from '../../../../components/ImageSliderCars';
 import { ScrollView } from 'react-native-gesture-handler';
 
 import Animated, { FlipInYRight } from 'react-native-reanimated';
-import { useFocusScreen } from '../../../hooks/useFocusScreen';
-import { ImageSliderProducts } from '../../../components/ImageSliderProducts';
+import { useFocusScreen } from '../../../../hooks/useFocusScreen';
 
 
 type Params = {
     any:any;
 }
 
-export function ProductDetails(){
+export function CarDetails(){
   const route = useRoute()
+  const {isPlaying} = useFocusScreen();
   const { data } = route.params as Params;
-
   const navigation = useNavigation();
-  const { isPlaying } = useFocusScreen();
-
+  console.log('play', isPlaying)
   return (
     <Container>
       <ContentIcon>
@@ -60,7 +58,7 @@ export function ProductDetails(){
         contentContainerStyle={{ flexGrow:1, backgroundColor: theme.colors.header, paddingBottom: 20 }}>
 
         <CarrouselView>
-          <ImageSliderProducts
+          <ImageSliderCars
             imagesUrl={
               data.media
             }
@@ -76,8 +74,8 @@ export function ProductDetails(){
         <ContentInfoCar>
 
           <ContentInfoYear>
-            <YearInfo>Marca</YearInfo>
-            <Year>{data.year ? data.year : '---'}</Year>
+            <YearInfo>Ano</YearInfo>
+            <Year>{data.year}</Year>
           </ContentInfoYear>
 
           <Animated.View entering={FlipInYRight.delay(550)}>
