@@ -2,7 +2,7 @@ import React from 'react';
 import { FlatList } from 'react-native-gesture-handler';
 
 import { Entypo } from '@expo/vector-icons';
-import { categories } from '../../../../utils/categories';
+import { categories } from '../../../../../utils/categories';
 
 import {
   Container,
