@@ -21,7 +21,7 @@
 A furybass é um app desenvolvido para atender o mercado automotivo em geral.
 Nossos usuarios podem cadastrar a venda de seus carros modificados, seus produtos ou serviços
 ### 
-a furybass ainda esta em fase de desenvolvimento e logo será apresentada no mercado 
+a furybass ainda esta em fase de desenvolvimento e logo será apresentado no mercado 
  
 
 ### Projeto e protótipo de minha autoria
