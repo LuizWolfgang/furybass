@@ -55,12 +55,6 @@ export function EditAd(){
 
   const flatListRef = useRef(null);
 
-
-  //   const [category, setCategory] = useState({
-  //     key: 'category',
-  //     name: 'Categoria'
-  //   });
-
   const navigation = useNavigation();
   const {isPlaying} = useFocusScreen();
   const route = useRoute()

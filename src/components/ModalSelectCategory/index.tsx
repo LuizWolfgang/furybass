@@ -3,7 +3,6 @@ import { Feather } from '@expo/vector-icons'
 import {
   Container,
   HeaderContainer,
-  TitleText,
   Content,
   CloseButton,
   Touch,
@@ -11,32 +10,20 @@ import {
 } from './styles';
 import theme from '../../styles/theme';
 import { ScrollView } from 'react-native';
+import { brazilianStates } from '../../utils/brazilianStates';
+
 
 type ContentModalProps = {
     onDismiss: () => void
-    handleSelectCategory: (name: string) => void
+    handleSelectCountry: (country: string) => void
 }
+export function ModalSelectCategory({ onDismiss, handleSelectCountry }: ContentModalProps ){
 
-const options = [
-  {
-    icon: '',
-    value : 1,
-    name : 'Carro ou Moto ou Jetski'
-  },
-  {
-    icon: '',
-    value : 2,
-    name : 'Produto ou Som ou Peças ou Rodas'
-  },
-  {
-    icon: '',
-    value : 3,
-    name : 'Serviços'
-  },
+  const handleSelectCountryModal = (country: string) => {
+    handleSelectCountry(country);
+    onDismiss();
+  }
 
-]
-
-export function ModalSelectCategory({ onDismiss, handleSelectCategory }: ContentModalProps ){
   return (
     <Container>
       <HeaderContainer>
@@ -45,15 +32,15 @@ export function ModalSelectCategory({ onDismiss, handleSelectCategory }: Content
         </CloseButton>
       </HeaderContainer>
       <ScrollView
-        contentContainerStyle={{ justifyContent: 'center', alignItems: 'center', paddingBottom: 20}}
+        contentContainerStyle={{ justifyContent: 'center', alignItems: 'center', paddingBottom: 80}}
       >
         {
-          options.map((option) => {
+          brazilianStates.map((option) => {
             return (
-              <Content key={option.value}>
+              <Content key={option.key}>
                 {/* <Feather name={option.icon} size={24}/> */}
-                <Touch onPress={() => handleSelectCategory(option.name)}>
-                  <Text key={option.value}>
+                <Touch onPress={() => handleSelectCountryModal(option.key)}>
+                  <Text key={option.key}>
                     {option.name}
                   </Text>
                 </Touch>
@@ -62,10 +49,6 @@ export function ModalSelectCategory({ onDismiss, handleSelectCategory }: Content
           })
         }
       </ScrollView>
-
-      {
-
-      }
     </Container>
   );
 }
