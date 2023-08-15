@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import { Input } from '../../../../../components/Input';
 import { Errors, Footer, Form } from './styles';
-import { Button } from '../../../../../components/Button';
 import theme from '../../../../../styles/theme';
+import { View } from 'react-native';
+import { BottomSheetModal } from '@gorhom/bottom-sheet';
+import { Button } from '../../../../../components/Button';
+import { ModalSelectCategory } from '../../../../../components/ModalSelectCategory';
+import { useCountrySelected } from '../../../../../hooks/useCountrySelected';
 
 type FormDataProps = {
     title: string;
@@ -19,6 +23,27 @@ type FormDataProps = {
   }
 
 export function ProductsForm(){
+  const bottomSheetModalRef = useRef<BottomSheetModal>(null);
+  const [country, setCountry] = useState('')
+  // variables
+  const snapPoints = useMemo(() => ['25%', '50%'], []);
+
+  // callbacks
+  const handlePresentModalPress = useCallback(() => {
+    bottomSheetModalRef.current?.present();
+  }, []);
+
+  const handleDismissModalPress = useCallback(() => {
+    bottomSheetModalRef.current?.close();
+  },[])
+
+  const handleSheetChanges = useCallback((index: number) => {
+    // console.log('handleSheetChanges', index);
+  }, []);
+
+  const handleSelectCountry = (country: string) => {
+    setCountry(country)
+  }
 
   const productSchema = yup.object({
     title: yup.string().required('Informe o titulo'),
@@ -140,6 +165,27 @@ export function ProductsForm(){
             />
           )}
         />
+        <View>
+          <Button
+            onPress={handlePresentModalPress}
+            title={ country ? country : 'Selecione o'}
+            color="black"
+          />
+          <BottomSheetModal
+            ref={bottomSheetModalRef}
+            index={1}
+            snapPoints={snapPoints}
+            onChange={handleSheetChanges}
+          >
+            <View>
+              <ModalSelectCategory
+                handleSelectCountry={handleSelectCountry}
+                onDismiss={handleDismissModalPress}
+              />
+            </View>
+          </BottomSheetModal>
+        </View>
+
 
         <Footer>
           <Button
