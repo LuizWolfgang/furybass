@@ -95,8 +95,6 @@ export const  CardTextAddImage = styled.TouchableOpacity`
     flex-direction: row;
     gap: 8px;
 
-    margin-top: 8px;
-
 `
 export const ContentIcons = styled.View``
 
@@ -127,7 +125,7 @@ export const ImageIndexes = styled.View`
 `
 
 export const Form = styled.View`
-  margin: 55px 0px;
+  margin: 50px 0px;
 
   width: 100%;
 `

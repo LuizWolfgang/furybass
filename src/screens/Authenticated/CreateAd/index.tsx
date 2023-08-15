@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Image, TouchableOpacity, View, FlatList, Dimensions, Platform, ScrollView, TouchableWithoutFeedback, Modal } from 'react-native';
+import { Image, Text, View, FlatList, Dimensions, Platform, ScrollView, TouchableWithoutFeedback, Modal } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 
 import theme from '../../../styles/theme';
@@ -39,10 +39,9 @@ import { Input } from '../../../components/Input';
 
 import { Button } from '../../../components/Button';
 import { useFocusScreen } from '../../../hooks/useFocusScreen';
-
-const windowWidth = Dimensions.get("window").width;
-const windowHeight =  Dimensions.get("window").width;
-const DIMENSIONS = Dimensions.get("window").height < 700 ? 290 : windowHeight
+import { VeichleForm } from './forms/veichelsForm';
+import { ProductsForm } from './forms/productsForm';
+import BottomSheet from '@gorhom/bottom-sheet';
 
 type FormDataProps = {
     email: string;
@@ -55,20 +54,14 @@ export function CreateAd(){
 
   const flatListRef = useRef(null);
 
-
-  //   const [category, setCategory] = useState({
-  //     key: 'category',
-  //     name: 'Categoria'
-  //   });
-
   const navigation = useNavigation();
   const {isPlaying} = useFocusScreen();
   const route = useRoute()
-  const { item } = route.params ? route.params : '' as any;
+  const { item, country } = route.params ? route.params : '' as any;
   const video = useRef(null)
   const length = images.length
 
-
+  console.log('country', country)
   const createdAt = yup.object({
     email: yup.string().required('Informe o email'),
     password:  yup.string().required('Informe a senha'),
@@ -92,6 +85,7 @@ export function CreateAd(){
     navigation.navigate("categories")
   }
 
+
   const handleDeleteImage = async (index) => {
     const updatedItems = [...images];
     updatedItems.splice(index, 1);
@@ -111,6 +105,29 @@ export function CreateAd(){
     }
   };
 
+  //Renderiza os formularios
+  const RenderForm = ({ value }) => {
+    switch (value) {
+    case 'Veiculos':
+      return (
+        <>
+          <VeichleForm/>
+        </>
+      );
+    case 'Produtos':
+      return (
+        <>
+          <ProductsForm/>
+        </>
+      );
+    default:
+      return (
+        <View>
+          <Text>AAAAAA</Text>
+        </View>
+      );
+    }
+  };
   return (
     <Container>
       <TouchableWithoutFeedback>
@@ -204,48 +221,6 @@ export function CreateAd(){
         </Animated.View>
         }
         <Form>
-          <Controller
-            control={control}
-            name="email"
-            render={({ field: { onChange, onBlur, value } }) => (
-              <Input
-                placeholder="Titulo do anuncio"
-                placeholderTextColor={theme.colors.placeholder}
-                onChangeText={onChange}
-                value={value}
-              />
-            )}
-          />
-          {errors.email && <Errors>{errors.email.message}</Errors>}
-
-          <Controller
-            control={control}
-            name="email"
-            render={({ field: { onChange, onBlur, value } }) => (
-              <Input
-                placeholder="Seu numero para contato (Whatsapp)"
-                placeholderTextColor={theme.colors.placeholder}
-                onChangeText={onChange}
-                value={value}
-              />
-            )}
-          />
-          {errors.email && <Errors>{errors.email.message}</Errors>}
-
-          <Controller
-            control={control}
-            name="password"
-            render={({ field: { onChange, onBlur, value } }) => (
-              <Input
-                placeholder="Descriçao do produto"
-                placeholderTextColor={theme.colors.placeholder}
-                value={value}
-                onChangeText={onChange}
-                height
-              />
-            )}
-          />
-          {errors.password && <Errors>{errors.password.message}</Errors>}
 
           <Button
             onPress={handleOpenSelectCategoryModal}
@@ -253,17 +228,8 @@ export function CreateAd(){
             color="black"
           />
 
+          <RenderForm value={item ? item.type : undefined} />
         </Form>
-
-        <Footer>
-          <Button
-            enabled
-            color={theme.colors.success}
-            loading={false}
-            title="Publicar anuncio"
-            onPress={handleOpenSelectCategoryModal}
-          />
-        </Footer>
       </ScrollView>
     </Container>
   );
