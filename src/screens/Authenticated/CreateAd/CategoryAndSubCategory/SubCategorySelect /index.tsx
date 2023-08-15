@@ -30,8 +30,6 @@ export function SubCategorySelect(){
 
   const { item } = route.params as any;
 
-  console.log('item', item)
-
   function handleCategorySelect(category: Category){
     navigation.navigate('createAd', { item: category})
   }
