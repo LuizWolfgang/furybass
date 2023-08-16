@@ -42,6 +42,7 @@ import { useFocusScreen } from '../../../hooks/useFocusScreen';
 import { VeichleForm } from './forms/veichelsForm';
 import { ProductsForm } from './forms/productsForm';
 import BottomSheet from '@gorhom/bottom-sheet';
+import { ServicesForm } from './forms/servicesForm';
 
 type FormDataProps = {
     email: string;
@@ -119,14 +120,20 @@ export function CreateAd(){
           <ProductsForm/>
         </>
       );
+    case 'Serviços':
+      return (
+        <>
+          <ServicesForm/>
+        </>
+      );
     default:
       return (
-        <View>
-          <Text>AAAAAA</Text>
-        </View>
+        <></>
       );
     }
   };
+
+
   return (
     <Container>
       <TouchableWithoutFeedback>
