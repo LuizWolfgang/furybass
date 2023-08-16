@@ -17,8 +17,6 @@ type FormDataProps = {
     number: string;
     city: string;
     brand: string;
-    year: string;
-    country: string;
     price: string
   }
 
@@ -46,14 +44,12 @@ export function ProductsForm(){
   }
 
   const productSchema = yup.object({
-    title: yup.string().required('Informe o titulo'),
-    description:  yup.string().required('Informe a descrico'),
-    number:  yup.string().required('Informe o numero'),
-    brand:  yup.string().required('Informe a marca'),
-    year:  yup.string().required('Informe o ano'),
+    title: yup.string().required('Informe o título'),
+    description:  yup.string().required('Informe a descrição'),
+    number:  yup.string().required('Informe o número'),
+    brand:  yup.string().required('Informe a marca do produto'),
     city:  yup.string().required('Informe a cidade'),
-    country:  yup.string().required('Informe a estado'),
-    price:  yup.string().required('Informe o numero'),
+    price:  yup.string().required('Informe o preço'),
   }).required();
 
   const { control, handleSubmit, formState: { errors } } = useForm<FormDataProps>({
@@ -73,7 +69,7 @@ export function ProductsForm(){
           name="title"
           render={({ field: { onChange, onBlur, value } }) => (
             <Input
-              placeholder="Titulo do anuncio:"
+              placeholder="Titulo do anúncio:"
               placeholderTextColor={theme.colors.placeholder}
               onChangeText={onChange}
               value={value}
@@ -102,49 +98,23 @@ export function ProductsForm(){
           name="number"
           render={({ field: { onChange, onBlur, value } }) => (
             <Input
-              placeholder="Telefone:"
+              placeholder="Seu número de whatsapp:"
               placeholderTextColor={theme.colors.placeholder}
               onChangeText={onChange}
               value={value}
+              keyboardType="phone-pad"
+              maxLength={12}
             />
           )}
         />
 
-        {errors.city && <Errors>{errors.city.message}</Errors>}
-        <Controller
-          control={control}
-          name="city"
-          render={({ field: { onChange, onBlur, value } }) => (
-            <Input
-              placeholder="cidade:"
-              placeholderTextColor={theme.colors.placeholder}
-              onChangeText={onChange}
-              value={value}
-            />
-          )}
-        />
-
-        {errors.city && <Errors>{errors.city.message}</Errors>}
+        {errors.brand && <Errors>{errors.brand.message}</Errors>}
         <Controller
           control={control}
           name="brand"
           render={({ field: { onChange, onBlur, value } }) => (
             <Input
-              placeholder="marca:"
-              placeholderTextColor={theme.colors.placeholder}
-              onChangeText={onChange}
-              value={value}
-            />
-          )}
-        />
-
-        {errors.country && <Errors>{errors.country.message}</Errors>}
-        <Controller
-          control={control}
-          name="country"
-          render={({ field: { onChange, onBlur, value } }) => (
-            <Input
-              placeholder="cidade:"
+              placeholder="Marca do produto:"
               placeholderTextColor={theme.colors.placeholder}
               onChangeText={onChange}
               value={value}
@@ -158,7 +128,23 @@ export function ProductsForm(){
           name="price"
           render={({ field: { onChange, onBlur, value } }) => (
             <Input
-              placeholder="preço:"
+              placeholder="Preço:"
+              placeholderTextColor={theme.colors.placeholder}
+              onChangeText={onChange}
+              value={value}
+              keyboardType="numeric"
+              maxLength={10}
+            />
+          )}
+        />
+
+        {errors.city && <Errors>{errors.city.message}</Errors>}
+        <Controller
+          control={control}
+          name="city"
+          render={({ field: { onChange, onBlur, value } }) => (
+            <Input
+              placeholder="Cidade:"
               placeholderTextColor={theme.colors.placeholder}
               onChangeText={onChange}
               value={value}
@@ -168,7 +154,7 @@ export function ProductsForm(){
         <View>
           <Button
             onPress={handlePresentModalPress}
-            title={ country ? country : 'Selecione o'}
+            title={ country ? country : 'Selecione o estado'}
             color="black"
           />
           <BottomSheetModal

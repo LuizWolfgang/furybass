@@ -11,21 +11,16 @@ type FormDataProps = {
     title: string;
     description: string;
     number: string;
-    km: string;
-    year: string;
-    brand?: string;
     city: string;
     price: string
   }
 
-export function VeichleForm(){
+export function ServicesForm(){
 
   const vehicleSchema = yup.object({
     title: yup.string().required('Informe o título'),
     description:  yup.string().required('Informe a descrição'),
     number:  yup.string().required('Informe o número'),
-    km: yup.string().required('Informe os Km s'),
-    year:  yup.string().required('Informe o ano'),
     city:  yup.string().required('Informe a cidade'),
     price:  yup.string().required('Informe o preço'),
   }).required();
@@ -61,7 +56,7 @@ export function VeichleForm(){
           name="description"
           render={({ field: { onChange, onBlur, value } }) => (
             <Input
-              placeholder="Descrição do produto:"
+              placeholder="Descrição do serviço:"
               placeholderTextColor={theme.colors.placeholder}
               value={value}
               onChangeText={onChange}
@@ -86,39 +81,6 @@ export function VeichleForm(){
           )}
         />
 
-        {errors.km && <Errors>{errors.km.message}</Errors>}
-        <Controller
-          control={control}
-          name="km"
-          render={({ field: { onChange, onBlur, value } }) => (
-            <Input
-              placeholder="km:"
-              placeholderTextColor={theme.colors.placeholder}
-              onChangeText={onChange}
-              value={value}
-              keyboardType="numeric"
-              maxLength={8}
-            />
-          )}
-        />
-
-        {errors.year && <Errors>{errors.year.message}</Errors>}
-        <Controller
-          control={control}
-          name="year"
-          render={({ field: { onChange, onBlur, value } }) => (
-            <Input
-              placeholder="Ano:"
-              placeholderTextColor={theme.colors.placeholder}
-              onChangeText={onChange}
-              value={value}
-              keyboardType="numeric"
-              maxLength={4}
-            />
-
-          )}
-        />
-
         {errors.city && <Errors>{errors.city.message}</Errors>}
         <Controller
           control={control}
@@ -129,7 +91,6 @@ export function VeichleForm(){
               placeholderTextColor={theme.colors.placeholder}
               onChangeText={onChange}
               value={value}
-              maxLength={30}
             />
           )}
         />
@@ -144,6 +105,7 @@ export function VeichleForm(){
               placeholderTextColor={theme.colors.placeholder}
               onChangeText={onChange}
               value={value}
+              keyboardType="numeric"
               maxLength={10}
             />
           )}

@@ -1,8 +1,7 @@
 import styled from 'styled-components/native';
 
 export const Form = styled.View`
-  margin: 55px 0px;
-
+  margin: 10px 0px;
   width: 100%;
 `
 
@@ -13,7 +12,7 @@ export const ContentModal = styled.View`
 `
 
 export const Errors = styled.Text`
-  font-size: 13px;
+  font-size: 15px;
   font-family: ${({ theme }) => theme.fonts.secondary_600};
   color: ${({ theme }) => theme.colors.main};
 
