@@ -11,10 +11,8 @@ import {
   TouchIcon,
   Title,
   ContentAddImage,
-  CardAddImage,
   CardTextAddImage,
   TextAddImage,
-  TextInfoImage,
   ImageIndexes,
   Form,
   Errors,
@@ -40,16 +38,15 @@ import { Input } from '../../../../components/Input';
 import { Button } from '../../../../components/Button';
 import { useFocusScreen } from '../../../../hooks/useFocusScreen';
 
-const windowWidth = Dimensions.get("window").width;
-const windowHeight =  Dimensions.get("window").width;
-const DIMENSIONS = Dimensions.get("window").height < 700 ? 290 : windowHeight
-
 type FormDataProps = {
     email: string;
     password: string;
   }
 
 export function EditAd(){
+  const route = useRoute()
+  const { data } = route.params ? route.params : '' as any;
+
   const [images, setImages] = useState([]);
   const [imageIndex, setimageIndex] = useState(0);
 
@@ -57,11 +54,9 @@ export function EditAd(){
 
   const navigation = useNavigation();
   const {isPlaying} = useFocusScreen();
-  const route = useRoute()
-  const { item } = route.params ? route.params : '' as any;
+
   const video = useRef(null)
   const length = images.length
-
 
   const createdAt = yup.object({
     email: yup.string().required('Informe o email'),
@@ -101,9 +96,31 @@ export function EditAd(){
 
     if (!result.canceled) {
       setImages(images.concat(result.assets));
+      console.log('result.assets', result.assets)
       flatListRef.current.scrollToEnd({animated: true });
     }
   };
+
+  useEffect(() => {
+    const formattedArray = data.media.map((item) => {
+      if (item.type === "image") {
+        return {
+          assetId: item.id,
+          type: item.type,
+          uri: item.url,
+        };
+      } else if (item.type === "video") {
+        return {
+          assetId: item.id,
+          type: item.type,
+          uri: item.url
+        };
+      }
+    }).filter(Boolean)
+    setImages(formattedArray);
+  }, []);
+
+  console.log('images', images)
 
   return (
     <Container>
@@ -135,7 +152,7 @@ export function EditAd(){
               <FlatList
                 data={images}
                 ref={flatListRef}
-                onViewableItemsChanged={indexChanged.current}
+                // onViewableItemsChanged={indexChanged.current}
                 viewabilityConfig={{
                   itemVisiblePercentThreshold: 20,
                 }}
@@ -150,24 +167,42 @@ export function EditAd(){
                     </TouchIconCloseMedia>
                     { item.type === "image" ?
                       <Image
-                        key={item.uri}
                         style={{ height: 200, width: images.length === 0 ? 390 : 350, marginHorizontal: 1}}
                         resizeMode='cover'
-                        source={{  uri: item.uri }}
+                        source={{ uri: item.uri }}
                       />
                       :
                       <View style={{ height: 290, width: 340}}>
-                        <Video
-                          key={item.uri}
-                          style={{ height: 200, width: images.length === 0 ? 390 : 350}}
-                          ref={video}
-                          source={{ uri: item.uri }}
-                          shouldPlay={isPlaying && index === imageIndex}
-                          volume={1}
-                          useNativeControls
-                          resizeMode={ResizeMode.COVER}
-                          isLooping
-                        />
+                        {
+                          typeof item.uri === 'string' ?
+                            <Video
+                              key={item.uri}
+                              style={{ height: 200, width: images.length === 0 ? 390 : 350}}
+                              ref={video}
+                              source={{ uri: item.uri }}
+                              shouldPlay={isPlaying && index === imageIndex}
+                              volume={1}
+                              useNativeControls
+                              resizeMode={ResizeMode.COVER}
+                              isLooping
+                            />
+
+                            :
+
+                            <Video
+                              key={item.uri}
+                              style={{ height: 200, width: images.length === 0 ? 390 : 350}}
+                              ref={video}
+                              source={item.uri}
+                              shouldPlay={isPlaying && index === imageIndex}
+                              volume={1}
+                              useNativeControls
+                              resizeMode={ResizeMode.COVER}
+                              isLooping
+                            />
+
+                        }
+
                       </View>
                     }
                   </>
@@ -241,7 +276,7 @@ export function EditAd(){
 
           <Button
             onPress={handleOpenSelectCategoryModal}
-            title={item?.name ? item?.name :  'Selecione a categoria'}
+            title={'Selecione a categoria'}
             color="black"
           />
 

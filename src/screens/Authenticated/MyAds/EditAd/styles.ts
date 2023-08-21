@@ -1,15 +1,23 @@
+import { Dimensions } from 'react-native';
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 import styled from 'styled-components/native';
+const DIMENSIONS = Dimensions.get("screen").height;
 
 type ContentAddImage = {
     length: number;
 }
+
 
 export const Container = styled.View`
     flex:1;
     background-color: ${({ theme }) => theme.colors.header};
     padding: 14px ;
 `;
+
+export const CarrouselView = styled.View`
+
+  justify-content: flex-end;
+ `
 
 export const Header = styled.View`
     margin-top: ${getStatusBarHeight() + 10}px; ;

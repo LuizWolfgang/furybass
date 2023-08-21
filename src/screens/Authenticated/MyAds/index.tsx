@@ -76,7 +76,7 @@ export function Myads() {
         >
           {({ setOffsetY }) => (
             <FlatList
-              data={filteredData}
+              data={Products}
               contentContainerStyle={{ paddingTop:20, paddingBottom:50 }}
               onScroll={(ev) => {
                 setOffsetY(ev.nativeEvent.contentOffset.y);

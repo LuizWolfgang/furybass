@@ -43,7 +43,7 @@ export const data = [
 
 export const Products = [
   {
-    id:'1908',
+    id:'108',
     name:'Auto falante',
     price: '300',
     brand: 'zetta',
@@ -51,27 +51,27 @@ export const Products = [
 
     },
     media: [
-      { type: 'image', url: 'https://http2.mlstatic.com/D_NQ_NP_917185-MLB46403036414_062021-V.webp', id: '1' },
-      { type: 'video', url: require('../assets/video.mp4'), id: '2'},
+      { type: 'image', url: 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTjHl0Z4AYO_2QbLdRz7X6w2mhV2YI_sXA_iuQjoLJUk0pR1InXM6gE2JWhgw6EY6X3BXZT25t7E-pwa-QYqY88cfS1gnlSPUp6k8mf_ceVeJ71dv3eQt5zCg&usqp=CAc', id: '144' },
+      { type: 'video', url: require('../assets/video.mp4'), id: '20'},
     ]
   },
-  {
-    id:'892',
-    name:'suspen ar',
-    price: '60.000',
-    media: [
-      { type: 'image', url: 'https://http2.mlstatic.com/D_NQ_NP_651121-MLB53660885732_022023-O.webp', id: '3' },
-      { type: 'video', url: require('../assets/video.mp4'), id: '4'},
-    ]
-  },
-  {
-    id:'8765',
-    name:'Suspensao',
-    price: '3000',
-    brand: 'castor',
-    media: [
-      { type: 'image', url: 'https://http2.mlstatic.com/D_NQ_NP_692762-MLB50484299700_062022-V.webp', id: '7' },
-      { type: 'video', url: require('../assets/video.mp4'), id: '8'},
-    ]
-  }
+//   {
+//     id:'892',
+//     name:'suspen ar',
+//     price: '60.000',
+//     media: [
+//       { type: 'image', url: 'https://rodasdeligaleve.com.br/media/greenrivers/webp/catalog/product/cache/25a46c22a089dcc7f68b120fb23ef518/H/I/HILUX-GD1.webp', id: '3' },
+//       { type: 'video', url: require('../assets/video1.mp4'), id: '4'},
+//     ]
+//   },
+//   {
+//     id:'8765',
+//     name:'Suspensao',
+//     price: '3000',
+//     brand: 'castor',
+//     media: [
+//       { type: 'image', url: 'https://http2.mlstatic.com/D_NQ_NP_692762-MLB50484299700_062022-V.webp', id: '7' },
+//     //   { type: 'video', url: require('../assets/video.mp4'), id: '8'},
+//     ]
+//   }
 ];
