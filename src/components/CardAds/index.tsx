@@ -27,7 +27,7 @@ export function CardAds({ data , paused, playFocus}: CardProps){
   if(!data){
     return <ActivityIndicator/>
   }
-
+  console.log(data)
   const navigation = useNavigation<authScreenProps>();
   return (
     <Container>

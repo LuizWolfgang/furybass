@@ -1,8 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Image, Text, View, FlatList, Dimensions, Platform, ScrollView, TouchableWithoutFeedback, Modal } from 'react-native';
+import React, { useRef, useState } from 'react';
+import { Image, Text, View, FlatList, Platform, ScrollView, TouchableWithoutFeedback } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 
-import theme from '../../../styles/theme';
 import {
   Container,
   ContentTitle,
@@ -132,7 +131,6 @@ export function CreateAd(){
       );
     }
   };
-
 
   return (
     <Container>
