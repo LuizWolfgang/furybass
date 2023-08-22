@@ -5,6 +5,11 @@ export const Form = styled.View`
 
   width: 100%;
 `
+
+export const ViewModal =  styled.View`
+    margin-bottom: 5px;
+`
+
 export const Errors = styled.Text`
   font-size: 15px;
   font-family: ${({ theme }) => theme.fonts.secondary_600};

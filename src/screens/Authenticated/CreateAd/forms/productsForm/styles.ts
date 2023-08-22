@@ -8,7 +8,10 @@ export const Form = styled.View`
 export const ContentModal = styled.View`
     flex: 1;
     padding: 24px;
+`
 
+export const ViewModal =  styled.View`
+    margin-bottom: 5px;
 `
 
 export const Errors = styled.Text`

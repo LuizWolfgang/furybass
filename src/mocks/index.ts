@@ -75,3 +75,51 @@ export const Products = [
 //     ]
 //   }
 ];
+
+export const Ads = [
+  {
+    id: 12,
+    title: 'Autofalante',
+    type: 'Veiculos',
+    description: 'oi',
+    number: 'oi',
+    km: 'oi',
+    year: 'oi',
+    city: 'brasilia',
+    country: "DF",
+    price: '3000',
+    media: [
+      { type: 'image', url: 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTjHl0Z4AYO_2QbLdRz7X6w2mhV2YI_sXA_iuQjoLJUk0pR1InXM6gE2JWhgw6EY6X3BXZT25t7E-pwa-QYqY88cfS1gnlSPUp6k8mf_ceVeJ71dv3eQt5zCg&usqp=CAc', id: '144' },
+      { type: 'video', url: require('../assets/video.mp4'), id: '20'},
+    ]
+  },
+  {
+    id: 13,
+    title: 'Produtos',
+    type: 'Produtos',
+    description: 'oi',
+    number: 'oi',
+    brand: 'pionner',
+    city: 'brasilia',
+    country: "DF",
+    price: '3000',
+    media: [
+      { type: 'image', url: 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTjHl0Z4AYO_2QbLdRz7X6w2mhV2YI_sXA_iuQjoLJUk0pR1InXM6gE2JWhgw6EY6X3BXZT25t7E-pwa-QYqY88cfS1gnlSPUp6k8mf_ceVeJ71dv3eQt5zCg&usqp=CAc', id: '144' },
+      { type: 'video', url: require('../assets/video.mp4'), id: '20'},
+    ]
+  },
+  {
+    id: 14,
+    title: 'Autofalante',
+    type: 'Serviços',
+    description: 'oi',
+    number: 'oi',
+    city: 'brasilia',
+    country: "DF",
+    price: '3000',
+    media: [
+      { type: 'image', url: 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTjHl0Z4AYO_2QbLdRz7X6w2mhV2YI_sXA_iuQjoLJUk0pR1InXM6gE2JWhgw6EY6X3BXZT25t7E-pwa-QYqY88cfS1gnlSPUp6k8mf_ceVeJ71dv3eQt5zCg&usqp=CAc', id: '144' },
+      { type: 'video', url: require('../assets/video.mp4'), id: '20'},
+    ]
+  }
+]

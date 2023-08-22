@@ -17,7 +17,7 @@ type ContentModalProps = {
     onDismiss: () => void
     handleSelectCountry: (country: string) => void
 }
-export function ModalSelectCategory({ onDismiss, handleSelectCountry }: ContentModalProps ){
+export function ModalSelect({ onDismiss, handleSelectCountry }: ContentModalProps ){
 
   const handleSelectCountryModal = (country: string) => {
     handleSelectCountry(country);
