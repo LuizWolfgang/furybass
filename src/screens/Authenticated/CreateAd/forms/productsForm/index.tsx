@@ -1,28 +1,32 @@
-import React, { useCallback, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import { Input } from '../../../../../components/Input';
-import { Errors, Footer, Form } from './styles';
+import { Errors, Footer, Form, ViewModal } from './styles';
 import theme from '../../../../../styles/theme';
-import { View } from 'react-native';
 import { BottomSheetModal } from '@gorhom/bottom-sheet';
 import { Button } from '../../../../../components/Button';
-import { ModalSelectCategory } from '../../../../../components/ModalSelectCategory';
-import { useCountrySelected } from '../../../../../hooks/useCountrySelected';
+import { ModalSelect } from '../../../../../components/ModalSelect';
 
 type FormDataProps = {
     title: string;
     description: string;
     number: string;
     city: string;
+    country?: string;
     brand: string;
     price: string
   }
 
-export function ProductsForm(){
+  type dataFormProps = {
+    dataForm: FormDataProps
+  }
+
+export function ProductsForm({dataForm}: dataFormProps ){
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
   const [country, setCountry] = useState('')
+
   // variables
   const snapPoints = useMemo(() => ['25%', '50%'], []);
 
@@ -53,12 +57,26 @@ export function ProductsForm(){
   }).required();
 
   const { control, handleSubmit, formState: { errors } } = useForm<FormDataProps>({
-    resolver: yupResolver(productSchema)
+    resolver: yupResolver(productSchema),
+    defaultValues: {
+      title: dataForm ? dataForm.title : '',
+      description: dataForm ? dataForm.description : '',
+      number: dataForm ? dataForm.number : '',
+      brand: dataForm ? dataForm.brand : '',
+      city: dataForm ? dataForm.city : '',
+      price: dataForm ? dataForm.price : '',
+    }
   });
 
   async function onSubmit(data: FormDataProps) {
     console.log('aaaaaaaaaaa', data)
   }
+
+  useEffect(() => {
+    if(dataForm?.country){
+      setCountry(dataForm.country)
+    }
+  },[])
 
   return (
     <>
@@ -72,7 +90,7 @@ export function ProductsForm(){
               placeholder="Titulo do anúncio:"
               placeholderTextColor={theme.colors.placeholder}
               onChangeText={onChange}
-              value={value}
+              defaultValue={value}
             />
           )}
         />
@@ -85,7 +103,7 @@ export function ProductsForm(){
             <Input
               placeholder="Descrição do produto:"
               placeholderTextColor={theme.colors.placeholder}
-              value={value}
+              defaultValue={value}
               onChangeText={onChange}
               height
             />
@@ -101,7 +119,7 @@ export function ProductsForm(){
               placeholder="Seu número de whatsapp:"
               placeholderTextColor={theme.colors.placeholder}
               onChangeText={onChange}
-              value={value}
+              defaultValue={value}
               keyboardType="phone-pad"
               maxLength={12}
             />
@@ -117,7 +135,7 @@ export function ProductsForm(){
               placeholder="Marca do produto:"
               placeholderTextColor={theme.colors.placeholder}
               onChangeText={onChange}
-              value={value}
+              defaultValue={value}
             />
           )}
         />
@@ -131,7 +149,7 @@ export function ProductsForm(){
               placeholder="Preço:"
               placeholderTextColor={theme.colors.placeholder}
               onChangeText={onChange}
-              value={value}
+              defaultValue={value}
               keyboardType="numeric"
               maxLength={10}
             />
@@ -147,11 +165,12 @@ export function ProductsForm(){
               placeholder="Cidade:"
               placeholderTextColor={theme.colors.placeholder}
               onChangeText={onChange}
-              value={value}
+              defaultValue={value}
             />
           )}
         />
-        <View>
+
+        <ViewModal>
           <Button
             onPress={handlePresentModalPress}
             title={ country ? country : 'Selecione o estado'}
@@ -163,24 +182,35 @@ export function ProductsForm(){
             snapPoints={snapPoints}
             onChange={handleSheetChanges}
           >
-            <View>
-              <ModalSelectCategory
+            <>
+              <ModalSelect
                 handleSelectCountry={handleSelectCountry}
                 onDismiss={handleDismissModalPress}
               />
-            </View>
+            </>
           </BottomSheetModal>
-        </View>
-
+        </ViewModal>
 
         <Footer>
           <Button
             enabled
             color={theme.colors.success}
             loading={false}
-            title="Publicar anuncio"
+            title={dataForm ? "Salvar alterações" : "Publicar anúncio"}
             onPress={handleSubmit(onSubmit)}
           />
+
+          {
+            dataForm &&
+            <Button
+              enabled
+              color={theme.colors.main}
+              loading={false}
+              title="Excluir anúncio"
+              onPress={handleSubmit(onSubmit)}
+            />
+          }
+
         </Footer>
       </Form>
     </>

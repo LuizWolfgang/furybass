@@ -52,6 +52,12 @@ export const Title = styled.Text`
     color: ${({ theme }) => theme.colors.background_secondary};
 `
 
+export const Delete = styled.Text`
+    font-family: ${({ theme }) => theme.fonts.secondary_600};
+    font-size: 18px;
+    color: ${({ theme }) => theme.colors.main};
+`
+
 export const ContentInfoMedia = styled.View`
     background-color: ${({ theme }) => theme.colors.header};
     height: 70px;

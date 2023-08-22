@@ -1,8 +1,17 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Image, TouchableOpacity, View, FlatList, Dimensions, Platform, ScrollView, TouchableWithoutFeedback, Modal, ActivityIndicator } from 'react-native';
+
+import {
+  Image,
+  TouchableOpacity,
+  View,
+  FlatList,
+  Platform,
+  ScrollView,
+  TouchableWithoutFeedback,
+  ActivityIndicator } from 'react-native';
+
 import { useNavigation, useRoute } from '@react-navigation/native';
 
-import theme from '../../../../styles/theme';
 import {
   Container,
   ContentTitle,
@@ -15,28 +24,28 @@ import {
   TextAddImage,
   ImageIndexes,
   Form,
-  Errors,
-  Footer} from './styles';
+} from './styles';
 
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
-
 
 import * as ImagePicker from 'expo-image-picker';
 
 import { Entypo } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 
+import { useFocusScreen } from '../../../../hooks/useFocusScreen';
+import {  useForm } from 'react-hook-form';
 import { ResizeMode, Video } from 'expo-av';
 
 import Animated, { FlipOutXDown, ZoomInRight } from 'react-native-reanimated';
 
 import { Bullet } from '../../../../components/Bullet';
-import { Controller, useForm } from 'react-hook-form';
-import { Input } from '../../../../components/Input';
-
 import { Button } from '../../../../components/Button';
-import { useFocusScreen } from '../../../../hooks/useFocusScreen';
+
+import { VeichleForm } from '../../CreateAd/forms/veichelsForm';
+import { ProductsForm } from '../../CreateAd/forms/productsForm';
+import { ServicesForm } from '../../CreateAd/forms/servicesForm';
 
 type FormDataProps = {
     email: string;
@@ -101,6 +110,35 @@ export function EditAd(){
     }
   };
 
+  //Renderiza os formularios
+  const RenderForm = ({ value, formDataEditAd}) => {
+    console.log('formDataEditAd', formDataEditAd)
+    switch (value) {
+    case 'Veiculos':
+      return (
+        <>
+          <VeichleForm dataForm={formDataEditAd}/>
+        </>
+      );
+    case 'Produtos':
+      return (
+        <>
+          <ProductsForm dataForm={formDataEditAd}/>
+        </>
+      );
+    case 'Serviços':
+      return (
+        <>
+          <ServicesForm dataForm={formDataEditAd}/>
+        </>
+      );
+    default:
+      return (
+        <></>
+      );
+    }
+  };
+
   useEffect(() => {
     const formattedArray = data.media.map((item) => {
       if (item.type === "image") {
@@ -120,7 +158,6 @@ export function EditAd(){
     setImages(formattedArray);
   }, []);
 
-  console.log('images', images)
 
   return (
     <Container>
@@ -152,7 +189,7 @@ export function EditAd(){
               <FlatList
                 data={images}
                 ref={flatListRef}
-                // onViewableItemsChanged={indexChanged.current}
+                onViewableItemsChanged={indexChanged.current}
                 viewabilityConfig={{
                   itemVisiblePercentThreshold: 20,
                 }}
@@ -231,73 +268,17 @@ export function EditAd(){
         </Animated.View>
         }
         <Form>
-          <Controller
-            control={control}
-            name="email"
-            render={({ field: { onChange, onBlur, value } }) => (
-              <Input
-                placeholder="Titulo do anuncio"
-                placeholderTextColor={theme.colors.placeholder}
-                onChangeText={onChange}
-                value={value}
-              />
-            )}
-          />
-          {errors.email && <Errors>{errors.email.message}</Errors>}
-
-          <Controller
-            control={control}
-            name="email"
-            render={({ field: { onChange, onBlur, value } }) => (
-              <Input
-                placeholder="Seu numero para contato (Whatsapp)"
-                placeholderTextColor={theme.colors.placeholder}
-                onChangeText={onChange}
-                value={value}
-              />
-            )}
-          />
-          {errors.email && <Errors>{errors.email.message}</Errors>}
-
-          <Controller
-            control={control}
-            name="password"
-            render={({ field: { onChange, onBlur, value } }) => (
-              <Input
-                placeholder="Descriçao do produto"
-                placeholderTextColor={theme.colors.placeholder}
-                value={value}
-                onChangeText={onChange}
-                height
-              />
-            )}
-          />
-          {errors.password && <Errors>{errors.password.message}</Errors>}
 
           <Button
             onPress={handleOpenSelectCategoryModal}
-            title={'Selecione a categoria'}
+            title={ data ? data.type :'Selecione a categoria'}
             color="black"
           />
 
+          <RenderForm value={data ? data.type : undefined} formDataEditAd={data}/>
+
         </Form>
 
-        <Footer>
-          <Button
-            enabled
-            color={theme.colors.main}
-            loading={false}
-            title="Excluir anúncio"
-            onPress={handleOpenSelectCategoryModal}
-          />
-          <Button
-            enabled
-            color={theme.colors.success}
-            loading={false}
-            title="Salvar alteraçoes"
-            onPress={handleOpenSelectCategoryModal}
-          />
-        </Footer>
       </ScrollView>
     </Container>
   );

@@ -13,7 +13,11 @@ export const Errors = styled.Text`
   margin-bottom: 5px;
   margin-left: 2px;
 `
+export const ViewModal =  styled.View`
+    margin-bottom: 5px;
+`
 
 export const Footer = styled.View`
+    margin-top: 10px;
   width: 100%
 `

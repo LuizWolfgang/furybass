@@ -57,10 +57,11 @@ export function CreateAd(){
   const navigation = useNavigation();
   const {isPlaying} = useFocusScreen();
   const route = useRoute()
-  const { item, country } = route.params ? route.params : '' as any;
+  const { item } = route.params ? route.params : '' as any;
   const video = useRef(null)
   const length = images.length
 
+  console.log('item', item)
   const createdAt = yup.object({
     email: yup.string().required('Informe o email'),
     password:  yup.string().required('Informe a senha'),
@@ -71,7 +72,7 @@ export function CreateAd(){
   });
 
   async function onSubmit(data: FormDataProps) {
-    console.log(data)
+    console.log(data, item)
   }
 
   const indexChanged = useRef((info) => {

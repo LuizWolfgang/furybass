@@ -29,7 +29,7 @@ import {
 } from "./styles";
 import { useNavigation } from "@react-navigation/native";
 
-import { Products } from "../../../mocks";
+import { Ads, Products } from "../../../mocks";
 import { useFocusScreen } from "../../../hooks/useFocusScreen";
 import { CardAds } from "../../../components/CardAds";
 
@@ -76,7 +76,7 @@ export function Myads() {
         >
           {({ setOffsetY }) => (
             <FlatList
-              data={Products}
+              data={Ads}
               contentContainerStyle={{ paddingTop:20, paddingBottom:50 }}
               onScroll={(ev) => {
                 setOffsetY(ev.nativeEvent.contentOffset.y);
