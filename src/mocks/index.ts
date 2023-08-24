@@ -5,6 +5,8 @@ export const data = [
     price: '20.000',
     year: 2016,
     km: '210 mil',
+    city: 'Brasilia',
+    country: "DF",
     acessories:{
 
     },
@@ -19,6 +21,8 @@ export const data = [
     price: '60.000',
     year: 2022,
     km: '10 mil',
+    city: 'Brasilia',
+    country: "DF",
     media: [
       { type: 'image', url: 'https://i.pinimg.com/originals/5f/73/1c/5f731caba175cb772a87af5cdb0ea0d5.jpg', id: '3' },
       { type: 'video', url: require('../assets/video.mp4'), id: '4'},
@@ -30,6 +34,8 @@ export const data = [
     price: '40.000',
     year: 2007,
     km: '170 mil',
+    city: 'Brasilia',
+    country: "DF",
     media: [
       { type: 'image', url: 'https://img.olx.com.br/images/24/244340621971026.jpg', id: '83'},
       { type: 'image', url: 'https://i.pinimg.com/originals/5f/73/1c/5f731caba175cb772a87af5cdb0ea0d5.jpg', id: '5' },
@@ -47,6 +53,8 @@ export const Products = [
     name:'Auto falante',
     price: '300',
     brand: 'zetta',
+    city: 'brasilia',
+    country: "DF",
     acessories:{
 
     },

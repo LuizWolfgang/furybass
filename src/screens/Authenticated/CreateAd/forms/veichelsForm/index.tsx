@@ -1,13 +1,20 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { Errors, Footer, Form, ViewModal } from './styles';
+import theme from '../../../../../styles/theme';
+
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+
 import * as yup from "yup";
+
 import { Input } from '../../../../../components/Input';
-import { Errors, Footer, Form, ViewModal } from './styles';
-import { Button } from '../../../../../components/Button';
-import theme from '../../../../../styles/theme';
-import { BottomSheetModal } from '@gorhom/bottom-sheet';
 import { ModalSelect } from '../../../../../components/ModalSelect';
+import { Button } from '../../../../../components/Button';
+
+
+import { BottomSheetModal } from '@gorhom/bottom-sheet';
+
+import { useNavigation } from '@react-navigation/native';
 
 type FormDataProps = {
     title: string;
@@ -21,11 +28,12 @@ type FormDataProps = {
   }
 
   type dataFormProps = {
-    dataForm: FormDataProps
+    dataForm?: FormDataProps
   }
 
 
 export function VeichleForm({dataForm} : dataFormProps){
+  const navigation = useNavigation();
 
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
   const [country, setCountry] = useState('')
@@ -75,7 +83,8 @@ export function VeichleForm({dataForm} : dataFormProps){
   });
 
   async function onSubmit(data: FormDataProps) {
-    console.log('VeichleForm', data)
+    console.log('VeichleForm', data, country)
+    navigation.navigate('teste')
   }
 
   useEffect(() => {

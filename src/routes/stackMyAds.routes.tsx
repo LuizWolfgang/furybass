@@ -3,6 +3,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { Myads } from '../screens/Authenticated/MyAds';
 import { EditAd } from '../screens/Authenticated/MyAds/EditAd';
 import { CreateAd } from '../screens/Authenticated/CreateAd';
+import { SignIn } from '../screens/Unauthenticated/SignIn';
 
 type AuthRoutes = {
     myAds: undefined;
@@ -20,6 +21,7 @@ export function StackMyAds() {
       <Stack.Screen name="myAds" component={Myads} />
       <Stack.Screen name="editAd" component={EditAd} />
       <Stack.Screen name="createAd" component={CreateAd} />
+      <Stack.Screen name="teste" component={SignIn} />
     </Stack.Navigator>
   );
 }

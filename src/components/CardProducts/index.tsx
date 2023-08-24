@@ -7,7 +7,8 @@ import {
   Product,
   SubTitle,
   Details,
-  TitleDetails
+  TitleDetails,
+  Price
 } from './styles';
 
 import { useNavigation } from '@react-navigation/native';
@@ -45,9 +46,9 @@ export function CardProducts({ data , paused, playFocus}: CardProps){
         <Product>
           {data.name}
         </Product>
-        <SubTitle>
+        <Price>
             R$: {data.price}
-        </SubTitle>
+        </Price>
       </InfoProducts>
       <Details onPress={() => navigation.navigate('productDetails', { data, playFocus })}>
         <TitleDetails>

@@ -20,7 +20,7 @@ type FormDataProps = {
   }
 
   type dataFormProps = {
-    dataForm: FormDataProps
+    dataForm?: FormDataProps
   }
 
 export function ProductsForm({dataForm}: dataFormProps ){

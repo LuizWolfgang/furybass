@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Image, Text, View, FlatList, Platform, ScrollView, TouchableWithoutFeedback } from 'react-native';
+import { Image, View, FlatList, Platform, ScrollView, TouchableWithoutFeedback } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 
 import {
@@ -16,8 +16,7 @@ import {
   TextInfoImage,
   ImageIndexes,
   Form,
-  Errors,
-  Footer} from './styles';
+} from './styles';
 
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
@@ -33,14 +32,14 @@ import { ResizeMode, Video } from 'expo-av';
 import Animated, { FlipOutXDown, ZoomInRight } from 'react-native-reanimated';
 
 import { Bullet } from '../../../components/Bullet';
-import { Controller, useForm } from 'react-hook-form';
-import { Input } from '../../../components/Input';
+import { useForm } from 'react-hook-form';
+
 
 import { Button } from '../../../components/Button';
 import { useFocusScreen } from '../../../hooks/useFocusScreen';
+
 import { VeichleForm } from './forms/veichelsForm';
 import { ProductsForm } from './forms/productsForm';
-import BottomSheet from '@gorhom/bottom-sheet';
 import { ServicesForm } from './forms/servicesForm';
 
 type FormDataProps = {
