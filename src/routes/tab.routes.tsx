@@ -15,6 +15,7 @@ import { ButtonNewSale } from '../components/ButtonNewSale';
 import { StackCreatedAd } from './stackCreatedAd.routes';
 import { StackMyAds } from './stackMyAds.routes';
 import { Profile } from '../screens/Authenticated/Profile';
+import { StackServices } from './stackServices.routes';
 
 
 type AppRoutes = {
@@ -23,7 +24,7 @@ type AppRoutes = {
   Produtos: undefined;
   CriarAnuncio: undefined;
   Anuncios: undefined;
-  Perfil:undefined;
+  Serviços:undefined;
 }
 
 export type AppNavigatorRouterProps = BottomTabNavigationProp<AppRoutes>
@@ -85,22 +86,22 @@ export function TabRoutes() {
         }}/>
 
       <Screen
+        name="Serviços"
+        component={StackServices}
+        options={{
+          tabBarHideOnKeyboard:true,
+          tabBarIcon: ({ focused }) => (
+            <FontAwesome5 name="tools" size={20} color={focused ? "#fefefed4" : "black"} />
+          )
+        }}/>
+
+      <Screen
         name="Anuncios"
         component={StackMyAds}
         options={{
           tabBarHideOnKeyboard:true,
           tabBarIcon: ({ focused }) => (
             <AntDesign name="tags" size={24} color={focused ? "#fefefed4" : "black"} />
-          )
-        }}/>
-
-      <Screen
-        name="Perfil"
-        component={Profile}
-        options={{
-          tabBarHideOnKeyboard:true,
-          tabBarIcon: ({ focused }) => (
-            <FontAwesome5 name="user-alt" size={20} color={focused ? "#fefefed4" : "black"} />
           )
         }}/>
     </Navigator>

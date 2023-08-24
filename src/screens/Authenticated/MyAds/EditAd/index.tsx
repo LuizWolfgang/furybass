@@ -24,6 +24,8 @@ import {
   TextAddImage,
   ImageIndexes,
   Form,
+  CardAddImage,
+  TextInfoImage,
 } from './styles';
 
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -182,7 +184,11 @@ export function EditAd(){
           {
             images.length === 0 ?
 
-              <ActivityIndicator/>
+              <CardAddImage onPress={pickImage}>
+                <AntDesign name="addfolder" size={22} color="white"/>
+                <TextAddImage>Incluir arquivos</TextAddImage>
+                <TextInfoImage>Escolha até 6 fotos e 1 video para mostrar o seu produto!</TextInfoImage>
+              </CardAddImage>
 
               :
 

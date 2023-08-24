@@ -79,6 +79,7 @@ export const ContentInfoPrice = styled.View`
     align-items: center;
     background-color: ${({ theme }) => theme.colors.header};
     min-width: 40%;
+    padding-right:10px;
 `;
 export const ContentContact = styled.View`
     background-color: ${({ theme }) => theme.colors.header};

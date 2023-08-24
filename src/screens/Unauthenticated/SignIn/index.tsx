@@ -128,6 +128,7 @@ export function SignIn(){
           <Footer>
             <Button
               onPress={handleSubmit(onSubmit)}
+              color={theme.colors.success}
               title="Login"
               enabled
               loading={false}
@@ -138,7 +139,7 @@ export function SignIn(){
                 value: ''
               })}
               light
-              color={theme.colors.input}
+              color={theme.colors.shape}
               title="Criar conta gratuita"
               loading={false}
             />

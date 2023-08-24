@@ -1,9 +1,10 @@
 import { useState } from "react";
 
+import { SearchInput } from "../../../components/SearchInput";
+
 import { FlatList, Platform } from "react-native";
 import { Dimensions, View } from "react-native";
-
-import { Entypo } from '@expo/vector-icons';
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 import {
   OffsetYProvider,
@@ -14,30 +15,29 @@ import {
 import {
   Container,
   Header,
-  ContentAd,
+  HeaderContent,
+  ContentProducts,
+  ContentMenu,
   Content,
   ViewEmptyComponent,
-  TextEmpty,
-  TouchIcon,
-  ContentTitle,
-  Title,
-  TouchAddAd,
-  TextAddAd
+  TextEmpty
 } from "./styles";
-import { useNavigation } from "@react-navigation/native";
 
-import { Ads, Products } from "../../../mocks";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { DrawerActions, useNavigation } from "@react-navigation/native";
+
+import { Services } from "../../../mocks";
 import { useFocusScreen } from "../../../hooks/useFocusScreen";
-import { CardAds } from "../../../components/CardAds";
+import { CardServices } from "../../../components/CardServices";
 
 //Dimensions
 const { height: windowHeight } = Dimensions.get("window");
 const windowPlatform = Platform.OS === "ios" ? 1.5 : 1.33;
 const boxHeight = windowHeight / windowPlatform;
 
-export function Myads() {
+export function DashboardServices() {
   const [loading, setLoading] = useState(true);
-  const [filteredData, setFilteredData] = useState(Ads);
+  const [filteredData, setFilteredData] = useState(Services);
 
   const {isPlaying} = useFocusScreen();
   const navigation = useNavigation();
@@ -45,7 +45,7 @@ export function Myads() {
 
   //filter flat list
   const filterData = (searchText) => {
-    const newData = Ads.filter((item) => {
+    const newData = Services.filter((item) => {
       const itemData = item.name.toUpperCase();
       const textData = searchText.toUpperCase();
       return itemData.indexOf(textData) > -1;
@@ -56,12 +56,16 @@ export function Myads() {
   return (
     <Container>
       <Header>
-        <TouchIcon onPress={() => navigation.goBack()} >
-          <Entypo name="chevron-with-circle-left" size={24} color="white" />
-        </TouchIcon>
-        <ContentTitle>
-          <Title>Meus anúncios</Title>
-        </ContentTitle>
+        <HeaderContent>
+          <SearchInput onFilter={filterData} />
+          <ContentMenu>
+            <TouchableOpacity
+              onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+            >
+              <Ionicons name="menu" size={30} color="white" />
+            </TouchableOpacity>
+          </ContentMenu>
+        </HeaderContent>
       </Header>
 
       <Content>
@@ -73,7 +77,7 @@ export function Myads() {
         >
           {({ setOffsetY }) => (
             <FlatList
-              data={Ads}
+              data={filteredData}
               contentContainerStyle={{ paddingTop:20, paddingBottom:50 }}
               onScroll={(ev) => {
                 setOffsetY(ev.nativeEvent.contentOffset.y);
@@ -81,12 +85,7 @@ export function Myads() {
               showsVerticalScrollIndicator={false}
               ListEmptyComponent={(
                 <ViewEmptyComponent>
-                  <TextEmpty>Ops, você não possui nenhum anúncio ☹️</TextEmpty>
-                  <TouchAddAd onPress={() => navigation.navigate('createAd')}>
-                    <TextAddAd>
-                        Clique aqui para anunciar
-                    </TextAddAd>
-                  </TouchAddAd>
+                  <TextEmpty>Ops, anúncio não encontrado ☹️</TextEmpty>
                 </ViewEmptyComponent>
               )}
               keyExtractor={(item) => item.id}
@@ -95,14 +94,14 @@ export function Myads() {
                   {() => (
                     <View
                       style={{
-                        height: boxHeight
+                        height: boxHeight,
                       }}
                     >
                       <InCenterConsumer>
                         {({ isInCenter }) =>
                           isInCenter ? (
-                            <ContentAd>
-                              <CardAds
+                            <ContentProducts>
+                              <CardServices
                                 data={item}
                                 paused={
                                   false
@@ -111,10 +110,10 @@ export function Myads() {
                                   isPlaying
                                 }
                               />
-                            </ContentAd>
+                            </ContentProducts>
                           ) : (
-                            <ContentAd>
-                              <CardAds
+                            <ContentProducts>
+                              <CardServices
                                 data={item}
                                 paused={
                                   true
@@ -123,7 +122,7 @@ export function Myads() {
                                   isPlaying
                                 }
                               />
-                            </ContentAd>
+                            </ContentProducts>
                           )
                         }
                       </InCenterConsumer>

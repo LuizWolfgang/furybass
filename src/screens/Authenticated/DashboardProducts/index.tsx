@@ -25,7 +25,7 @@ import {
 } from "./styles";
 
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { useNavigation } from "@react-navigation/native";
+import { DrawerActions, useNavigation } from "@react-navigation/native";
 
 import { Products } from "../../../mocks";
 import { useFocusScreen } from "../../../hooks/useFocusScreen";
@@ -60,7 +60,7 @@ export function DashboardProducts() {
           <SearchInput onFilter={filterData} />
           <ContentMenu>
             <TouchableOpacity
-              onPress={() => navigation.openDrawer()}
+              onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
             >
               <Ionicons name="menu" size={30} color="white" />
             </TouchableOpacity>
@@ -95,7 +95,6 @@ export function DashboardProducts() {
                     <View
                       style={{
                         height: boxHeight,
-                        backgroundColor: item,
                       }}
                     >
                       <InCenterConsumer>
