@@ -7,9 +7,10 @@ import {
   InfoCars,
   UserGreeting,
   SubTitle,
-  Km,
+  Country,
   Details,
-  TitleDetails
+  TitleDetails,
+  Price
 } from './styles';
 
 import { ImageSliderCars } from '../ImageSliderCars';
@@ -21,15 +22,14 @@ type CardProps = {
     paused: boolean;
     playFocus: boolean;
 }
-type authScreenProps = {
-    [x: string]: any;
-   }
 
 export function CardCars({ data , paused, playFocus}: CardProps){
   if(!data){
     return <ActivityIndicator/>
   }
-  const navigation = useNavigation<authScreenProps>();
+
+  console.log(data);
+  const navigation = useNavigation();
   return (
     <Container>
       <CarrouselView>
@@ -45,12 +45,13 @@ export function CardCars({ data , paused, playFocus}: CardProps){
         <UserGreeting>
           {data.name}
         </UserGreeting>
-        <SubTitle>
-            R$: {data.price}
-        </SubTitle>
-        <Km>
-            km: {data.km}
-        </Km>
+        <Country>
+          {data.city}-{data.country}
+        </Country>
+        <Price>
+         R$: {data.price}
+        </Price>
+
       </InfoCars>
       <Details onPress={() => navigation.navigate('CarDetails', { data, playFocus })}>
         <TitleDetails>

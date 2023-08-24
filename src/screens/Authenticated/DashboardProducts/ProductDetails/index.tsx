@@ -20,7 +20,9 @@ import {
   DescriptionText,
   TextDescription,
   BorderTextDescription,
-  PriceInfo
+  PriceInfo,
+  Km,
+  City
 } from './styles';
 
 import { useNavigation, useRoute } from '@react-navigation/native';
@@ -35,7 +37,6 @@ import { ScrollView } from 'react-native-gesture-handler';
 
 import Animated, { FlipInYRight } from 'react-native-reanimated';
 import { useFocusScreen } from '../../../../hooks/useFocusScreen';
-import { ImageSliderProducts } from '../../../../components/ImageSliderProducts';
 
 
 type Params = {
@@ -44,11 +45,10 @@ type Params = {
 
 export function ProductDetails(){
   const route = useRoute()
+  const {isPlaying} = useFocusScreen();
   const { data } = route.params as Params;
-
   const navigation = useNavigation();
-  const { isPlaying } = useFocusScreen();
-
+  console.log('play', isPlaying)
   return (
     <Container>
       <ContentIcon>
@@ -60,7 +60,7 @@ export function ProductDetails(){
         contentContainerStyle={{ flexGrow:1, backgroundColor: theme.colors.header, paddingBottom: 20 }}>
 
         <CarrouselView>
-          <ImageSliderProducts
+          <ImageSliderCars
             imagesUrl={
               data.media
             }
@@ -71,13 +71,14 @@ export function ProductDetails(){
 
         <ContentTitle>
           <Title>{data.name}</Title>
+          <City>{data.city}-{data.country}</City>
         </ContentTitle>
 
         <ContentInfoCar>
 
           <ContentInfoYear>
-            <YearInfo>Marca</YearInfo>
-            <Year>{data.year ? data.year : '---'}</Year>
+            <YearInfo>Marca:</YearInfo>
+            <Year>{data.brand}</Year>
           </ContentInfoYear>
 
           <Animated.View entering={FlipInYRight.delay(550)}>
@@ -87,26 +88,21 @@ export function ProductDetails(){
           </Animated.View>
 
           <ContentInfoPrice>
-            <PriceInfo>Preço</PriceInfo>
+            <PriceInfo>R$</PriceInfo>
             <Price>{data.price}</Price>
           </ContentInfoPrice>
 
         </ContentInfoCar>
 
         <ContentAcessories>
-          <ContentDescription>
-            <DescriptionText>
-                Descrição:
-            </DescriptionText>
-          </ContentDescription>
           <BorderTextDescription>
             <TextDescription>
             A Saveiro conta com uma identidade visual própria e muita inovação tecnológica. A picape da Volkswagen traz robustez, versatilidade e incorpora os sistemas de infotainment Volkswagen App-Connect, os mais modernos e interativos do mercado. O modelo conta ainda com três opções de carroceria (simples, estendida e dupla) e recursos de segurança como ESC (controle eletrônico de estabilidade) e freios ABS off-road.
             A Saveiro conta com uma identidade visual própria e muita inovação tecnológica. A picape da Volkswagen traz robustez, versatilidade e incorpora os sistemas de infotainment Volkswagen App-Connect, os mais modernos e interativos do mercado. O modelo conta ainda com três opções de carroceria (simples, estendida e dupla) e recursos de segurança como ESC (controle eletrônico de estabilidade) e freios ABS off-road.
             </TextDescription>
           </BorderTextDescription>
-
         </ContentAcessories>
+
       </ScrollView>
     </Container>
   );

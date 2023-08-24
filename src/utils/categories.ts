@@ -31,7 +31,7 @@ export const categories = [
     subcategories: [
       {
         key: "1",
-        name: 'Som aumotomotivo',
+        name: 'Som aumotomotivo em geral',
         type: "Produtos"
       },
       {
@@ -77,21 +77,71 @@ export const categories = [
       },
       {
         key: "2",
-        name: 'Reformas',
+        name: 'Mecânica em geral',
         type: "Serviços"
       },
       {
         key: "3",
-        name: 'Estética automotiva',
+        name: 'Pintura em geral',
         type: "Serviços"
       },
       {
         key: "4",
-        name: 'Películas',
+        name: 'Alinhamento e balanceamento',
         type: "Serviços"
       },
       {
         key: "5",
+        name: 'Troca de óleo',
+        type: "Serviços"
+      },
+      {
+        key: "6",
+        name: 'Borracharia',
+        type: "Serviços"
+      },
+      {
+        key: "7",
+        name: 'Centro automotivo',
+        type: "Serviços"
+      },
+      {
+        key: "8",
+        name: 'Polimento',
+        type: "Serviços"
+      },
+      {
+        key: "9",
+        name: 'Capotaria',
+        type: "Serviços"
+      },
+      {
+        key: "10",
+        name: 'Estética automotiva',
+        type: "Serviços"
+      },
+      {
+        key: "11",
+        name: 'Películas',
+        type: "Serviços"
+      },
+      {
+        key: "12",
+        name: 'Guincho',
+        type: "Serviços"
+      },
+      {
+        key: "13",
+        name: 'Chaveiro',
+        type: "Serviços"
+      },
+      {
+        key: "14",
+        name: 'Reforma de rodas',
+        type: "Serviços"
+      },
+      {
+        key: "15",
         name: 'Outros',
         type: "Serviços"
       },

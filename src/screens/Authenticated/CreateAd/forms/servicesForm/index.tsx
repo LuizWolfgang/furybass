@@ -19,7 +19,7 @@ type FormDataProps = {
   }
 
   type dataFormProps = {
-    dataForm: FormDataProps
+    dataForm?: FormDataProps
   }
 
 export function ServicesForm({dataForm}: dataFormProps ){

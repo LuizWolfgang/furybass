@@ -20,7 +20,9 @@ import {
   DescriptionText,
   TextDescription,
   BorderTextDescription,
-  PriceInfo
+  PriceInfo,
+  Km,
+  City
 } from './styles';
 
 import { useNavigation, useRoute } from '@react-navigation/native';
@@ -69,6 +71,8 @@ export function CarDetails(){
 
         <ContentTitle>
           <Title>{data.name}</Title>
+          <Km>km: {data.km}</Km>
+          <City>{data.city}-{data.country}</City>
         </ContentTitle>
 
         <ContentInfoCar>
@@ -85,26 +89,21 @@ export function CarDetails(){
           </Animated.View>
 
           <ContentInfoPrice>
-            <PriceInfo>Preço</PriceInfo>
+            <PriceInfo>R$</PriceInfo>
             <Price>{data.price}</Price>
           </ContentInfoPrice>
 
         </ContentInfoCar>
 
         <ContentAcessories>
-          <ContentDescription>
-            <DescriptionText>
-                Descrição:
-            </DescriptionText>
-          </ContentDescription>
           <BorderTextDescription>
             <TextDescription>
             A Saveiro conta com uma identidade visual própria e muita inovação tecnológica. A picape da Volkswagen traz robustez, versatilidade e incorpora os sistemas de infotainment Volkswagen App-Connect, os mais modernos e interativos do mercado. O modelo conta ainda com três opções de carroceria (simples, estendida e dupla) e recursos de segurança como ESC (controle eletrônico de estabilidade) e freios ABS off-road.
             A Saveiro conta com uma identidade visual própria e muita inovação tecnológica. A picape da Volkswagen traz robustez, versatilidade e incorpora os sistemas de infotainment Volkswagen App-Connect, os mais modernos e interativos do mercado. O modelo conta ainda com três opções de carroceria (simples, estendida e dupla) e recursos de segurança como ESC (controle eletrônico de estabilidade) e freios ABS off-road.
             </TextDescription>
           </BorderTextDescription>
-
         </ContentAcessories>
+
       </ScrollView>
     </Container>
   );
