@@ -92,7 +92,7 @@ export function SignUp(){
                     BOAS VINDAS 🔥
             </Title>
             <SubTitle>
-                    complete o seu cadastro e faça parte do maior app automotivo
+                    Complete o seu cadastro e faça parte do maior app automotivo
             </SubTitle>
           </Header>
 
@@ -169,6 +169,7 @@ export function SignUp(){
           <Footer>
             <Button
               onPress={handleNavigate}
+              color={theme.colors.success}
               title="Cadastar e acessar"
               enabled
               loading={false}

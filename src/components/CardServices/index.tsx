@@ -6,6 +6,8 @@ import {
   CarrouselView,
   InfoCars,
   UserGreeting,
+  SubTitle,
+  Country,
   Details,
   TitleDetails,
   Price
@@ -21,11 +23,12 @@ type CardProps = {
     playFocus: boolean;
 }
 
-export function CardAds({ data , paused, playFocus}: CardProps){
+export function CardServices({ data , paused, playFocus}: CardProps){
   if(!data){
     return <ActivityIndicator/>
   }
 
+  console.log(data);
   const navigation = useNavigation();
   return (
     <Container>
@@ -42,14 +45,17 @@ export function CardAds({ data , paused, playFocus}: CardProps){
         <UserGreeting>
           {data.name}
         </UserGreeting>
+        <Country>
+          {data.city}-{data.country}
+        </Country>
         <Price>
          R$: {data.price}
         </Price>
 
       </InfoCars>
-      <Details onPress={() => navigation.navigate('editAd', { data, playFocus })}>
+      <Details onPress={() => navigation.navigate('serviceDetails', { data, playFocus })}>
         <TitleDetails>
-            ver anúncio
+            ver mais
         </TitleDetails>
       </Details>
     </Container>

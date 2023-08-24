@@ -7,9 +7,6 @@ export const data = [
     km: '210 mil',
     city: 'Brasilia',
     country: "DF",
-    acessories:{
-
-    },
     media: [
       { type: 'image', url: 'https://quatrorodas.abril.com.br/wp-content/uploads/2022/02/Volkswagen-Saveiro-rebaixada-com-pintura-da-PRF-I-4.jpg?quality=70&strip=info&w=1080&h=720&crop=1', id: '1' },
       { type: 'video', url: require('../assets/video.mp4'), id: '2'},
@@ -49,15 +46,22 @@ export const data = [
 
 export const Products = [
   {
-    id:'108',
+    id:'8s765',
     name:'Auto falante',
-    price: '300',
-    brand: 'zetta',
-    city: 'brasilia',
+    price: '40.000',
+    city: 'Brasilia',
     country: "DF",
-    acessories:{
-
-    },
+    media: [
+      { type: 'image', url: 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTjHl0Z4AYO_2QbLdRz7X6w2mhV2YI_sXA_iuQjoLJUk0pR1InXM6gE2JWhgw6EY6X3BXZT25t7E-pwa-QYqY88cfS1gnlSPUp6k8mf_ceVeJ71dv3eQt5zCg&usqp=CAc', id: '144' },
+      { type: 'video', url: require('../assets/video.mp4'), id: '20'},
+    ]
+  },
+  {
+    id:'865765',
+    name:'Suspensão',
+    price: '40.000',
+    city: 'Brasilia',
+    country: "DF",
     media: [
       { type: 'image', url: 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTjHl0Z4AYO_2QbLdRz7X6w2mhV2YI_sXA_iuQjoLJUk0pR1InXM6gE2JWhgw6EY6X3BXZT25t7E-pwa-QYqY88cfS1gnlSPUp6k8mf_ceVeJ71dv3eQt5zCg&usqp=CAc', id: '144' },
       { type: 'video', url: require('../assets/video.mp4'), id: '20'},
@@ -86,13 +90,11 @@ export const Products = [
 
 export const Ads = [
   {
-    id: 12,
-    title: 'Autofalante',
+    id: '34g5st',
+    name: 'saveiro trend',
     type: 'Veiculos',
     description: 'oi',
     number: 'oi',
-    km: 'oi',
-    year: 'oi',
     city: 'brasilia',
     country: "DF",
     price: '3000',
@@ -102,8 +104,8 @@ export const Ads = [
     ]
   },
   {
-    id: 13,
-    title: 'Produtos',
+    id: '34gst',
+    name: '6X9 ZETTA',
     type: 'Produtos',
     description: 'oi',
     number: 'oi',
@@ -116,12 +118,16 @@ export const Ads = [
       { type: 'video', url: require('../assets/video.mp4'), id: '20'},
     ]
   },
+]
+
+export const Services = [
   {
-    id: 14,
-    title: 'Autofalante',
+    id: '12dsed',
+    name: 'Guincho',
     type: 'Serviços',
     description: 'oi',
     number: 'oi',
+    brand: 'pionner',
     city: 'brasilia',
     country: "DF",
     price: '3000',
@@ -129,5 +135,20 @@ export const Ads = [
       { type: 'image', url: 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTjHl0Z4AYO_2QbLdRz7X6w2mhV2YI_sXA_iuQjoLJUk0pR1InXM6gE2JWhgw6EY6X3BXZT25t7E-pwa-QYqY88cfS1gnlSPUp6k8mf_ceVeJ71dv3eQt5zCg&usqp=CAc', id: '144' },
       { type: 'video', url: require('../assets/video.mp4'), id: '20'},
     ]
-  }
+  },
+  {
+    id: '12ds',
+    name: 'Chaveiro',
+    type: 'Serviços',
+    description: 'oi',
+    number: 'oi',
+    brand: 'pionner',
+    city: 'brasilia',
+    country: "DF",
+    price: '3000',
+    media: [
+      { type: 'image', url: 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTjHl0Z4AYO_2QbLdRz7X6w2mhV2YI_sXA_iuQjoLJUk0pR1InXM6gE2JWhgw6EY6X3BXZT25t7E-pwa-QYqY88cfS1gnlSPUp6k8mf_ceVeJ71dv3eQt5zCg&usqp=CAc', id: '144' },
+      { type: 'video', url: require('../assets/video.mp4'), id: '20'},
+    ]
+  },
 ]

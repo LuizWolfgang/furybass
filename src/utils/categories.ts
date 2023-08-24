@@ -31,7 +31,7 @@ export const categories = [
     subcategories: [
       {
         key: "1",
-        name: 'Som aumotomotivo em geral',
+        name: 'Som aumotomotivo',
         type: "Produtos"
       },
       {

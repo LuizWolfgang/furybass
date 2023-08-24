@@ -1,6 +1,7 @@
 import { getStatusBarHeight } from "react-native-iphone-x-helper";
 import { RFValue } from "react-native-responsive-fontsize";
 import styled from "styled-components/native";
+
 export const Container = styled.View`
     flex: 1;
     background-color: ${({ theme }) => theme.colors.header};
@@ -32,7 +33,7 @@ export const UserName = styled.Text`
 
 export const UserGreeting = styled.Text`
     color: ${({ theme }) => theme.colors.shape};
-    font-size: 16px;
+    font-size: ${RFValue(16)}px;
     font-family: ${({ theme }) => theme.fonts.primary_400};
 `;
 
@@ -43,7 +44,7 @@ export const UserPhoto = styled.View`
     background-color: ${({ theme }) => theme.colors.main};
 `;
 
-export const ContentCars = styled.View`
+export const ContentProducts = styled.View`
     justify-content: center;
     align-items: center;
 `;
@@ -56,7 +57,6 @@ export const ContentMenu = styled.View`
 
 export const Content = styled.View`
     flex: 1;
-    background-color: ${({ theme }) => theme.colors.header};
 `;
 
 export const ViewEmptyComponent = styled.View`

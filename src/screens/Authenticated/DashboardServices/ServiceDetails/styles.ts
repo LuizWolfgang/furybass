@@ -66,14 +66,13 @@ export const ContentInfo = styled.View`
     align-items: center;
     color: ${({ theme }) => theme.colors.header};
     justify-content: space-between;
-
 `;
 
 export const ContentInfoType = styled.View`
     background-color: ${({ theme }) => theme.colors.header};
     align-items: center;
     min-width: 40%;
-    flex:1;
+    flex: 1;
 `;
 export const ContentInfoPrice = styled.View`
     align-items: center;
