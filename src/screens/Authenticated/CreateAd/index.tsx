@@ -60,7 +60,6 @@ export function CreateAd(){
   const video = useRef(null)
   const length = images.length
 
-  console.log('item', item)
   const createdAt = yup.object({
     email: yup.string().required('Informe o email'),
     password:  yup.string().required('Informe a senha'),

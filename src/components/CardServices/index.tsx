@@ -28,7 +28,6 @@ export function CardServices({ data , paused, playFocus}: CardProps){
     return <ActivityIndicator/>
   }
 
-  console.log(data);
   const navigation = useNavigation();
   return (
     <Container>

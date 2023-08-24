@@ -44,7 +44,7 @@ export function ProductDetails(){
   const {isPlaying} = useFocusScreen();
   const { data } = route.params as Params;
   const navigation = useNavigation();
-  console.log('play', isPlaying)
+
   return (
     <Container>
       <ContentIcon>
