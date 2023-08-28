@@ -57,7 +57,7 @@ export function DashboardProducts() {
     <Container>
       <Header>
         <HeaderContent>
-          <SearchInput onFilter={filterData} />
+          <SearchInput onFilter={filterData} type="Products"/>
           <ContentMenu>
             <TouchableOpacity
               onPress={() => navigation.dispatch(DrawerActions.openDrawer())}

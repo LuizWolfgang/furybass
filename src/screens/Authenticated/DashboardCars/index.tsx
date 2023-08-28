@@ -54,7 +54,7 @@ export function DashboardCars() {
     <Container>
       <Header>
         <HeaderContent>
-          <SearchInput onFilter={filterData} />
+          <SearchInput onFilter={filterData} type="Cars"/>
           <ContentMenu>
             <TouchableOpacity
               onPress={() => navigation.dispatch(DrawerActions.openDrawer())}

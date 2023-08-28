@@ -10,6 +10,11 @@ export const Container = styled.View`
     border-radius: 10px;
 `;
 
+export const ViewModal = styled.View`
+  background-color: ${({ theme }) => theme.colors.header};
+
+`
+
 export const ContentSearch = styled.View`
     margin-left: 10px;
 `
