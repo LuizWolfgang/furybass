@@ -1,6 +1,8 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { TabRoutes } from "./tab.routes";
 import { useWindowDimensions } from "react-native";
+import { Profile } from "../screens/Authenticated/Profile";
+import { TermsOfUse } from "../screens/Authenticated/ TermsOfUse";
 
 const Drawer = createDrawerNavigator();
 
@@ -17,7 +19,18 @@ export function AppRoutes() {
       <Drawer.Screen
         name="Dashboard"
         component={TabRoutes}
-        options={{ drawerLabel: 'Home', headerShown: false }}
+        options={{ drawerLabel: 'Dashboard', headerShown: false }}
+      />
+
+      <Drawer.Screen
+        name="Meu perfil"
+        component={Profile}
+        options={{ drawerLabel: 'Meu perfil', headerShown: false }}
+      />
+      <Drawer.Screen
+        name="Termos de uso"
+        component={TermsOfUse}
+        options={{ drawerLabel: 'Termos de uso', headerShown: false }}
       />
     </Drawer.Navigator>
   );

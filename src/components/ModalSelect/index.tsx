@@ -11,18 +11,82 @@ import {
 import theme from '../../styles/theme';
 import { ScrollView } from 'react-native';
 import { brazilianStates } from '../../utils/brazilianStates';
+import { optionsFilterCar, optionsFilterProducts, optionsFilterService } from '../../utils/optionsFilter';
 
 
 type ContentModalProps = {
     onDismiss: () => void
     handleSelectCountry: (country: string) => void
+    type?: 'Created' | 'Cars' | 'Products' | 'Services'
 }
-export function ModalSelect({ onDismiss, handleSelectCountry }: ContentModalProps ){
+export function ModalSelect({ onDismiss, handleSelectCountry, type}: ContentModalProps ){
 
   const handleSelectCountryModal = (country: string) => {
     handleSelectCountry(country);
     onDismiss();
   }
+
+  const RenderForm = ({ value }) => {
+    switch (value) {
+    case 'Cars':
+    case 'Products':
+      return (
+        <>
+          {
+            optionsFilterProducts.map((optionFilter) => {
+              return (
+                <Content key={optionFilter.key}>
+                  {/* <Feather name={option.icon} size={24}/> */}
+                  <Touch onPress={() => handleSelectCountryModal(optionFilter.key)}>
+                    <Text key={optionFilter.key}>
+                      {optionFilter.name}
+                    </Text>
+                  </Touch>
+                </Content>
+              )
+            })
+          }
+        </>
+      );
+    case 'Services':
+      return (
+        <>
+          {
+            optionsFilterService.map((optionFilter) => {
+              return (
+                <Content key={optionFilter.key}>
+                  <Touch onPress={() => handleSelectCountryModal(optionFilter.key)}>
+                    <Text key={optionFilter.key}>
+                      {optionFilter.name}
+                    </Text>
+                  </Touch>
+                </Content>
+              )
+            })
+          }
+        </>
+      );
+    default:
+      return (
+        <>
+          {
+            brazilianStates.map((option) => {
+              return (
+                <Content key={option.key}>
+                  {/* <Feather name={option.icon} size={24}/> */}
+                  <Touch onPress={() => handleSelectCountryModal(option.key)}>
+                    <Text key={option.key}>
+                      {option.name}
+                    </Text>
+                  </Touch>
+                </Content>
+              )
+            })
+          }
+        </>
+      );
+    }
+  };
 
   return (
     <Container>
@@ -32,22 +96,11 @@ export function ModalSelect({ onDismiss, handleSelectCountry }: ContentModalProp
         </CloseButton>
       </HeaderContainer>
       <ScrollView
+      showsVerticalScrollIndicator={false}
         contentContainerStyle={{ justifyContent: 'center', alignItems: 'center', paddingBottom: 80}}
       >
-        {
-          brazilianStates.map((option) => {
-            return (
-              <Content key={option.key}>
-                {/* <Feather name={option.icon} size={24}/> */}
-                <Touch onPress={() => handleSelectCountryModal(option.key)}>
-                  <Text key={option.key}>
-                    {option.name}
-                  </Text>
-                </Touch>
-              </Content>
-            )
-          })
-        }
+        <RenderForm value={type ? type : undefined} />
+
       </ScrollView>
     </Container>
   );

@@ -52,7 +52,7 @@ export const Products = [
     city: 'Brasilia',
     country: "DF",
     media: [
-      { type: 'image', url: 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTjHl0Z4AYO_2QbLdRz7X6w2mhV2YI_sXA_iuQjoLJUk0pR1InXM6gE2JWhgw6EY6X3BXZT25t7E-pwa-QYqY88cfS1gnlSPUp6k8mf_ceVeJ71dv3eQt5zCg&usqp=CAc', id: '144' },
+      { type: 'image', url: 'https://somautomotivobr.com.br/wp-content/uploads/alto-falante-zetta-mgt-6-280-rms-6-polegadas-7.jpg', id: '144' },
       { type: 'video', url: require('../assets/video.mp4'), id: '20'},
     ]
   },
@@ -63,29 +63,10 @@ export const Products = [
     city: 'Brasilia',
     country: "DF",
     media: [
-      { type: 'image', url: 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTjHl0Z4AYO_2QbLdRz7X6w2mhV2YI_sXA_iuQjoLJUk0pR1InXM6gE2JWhgw6EY6X3BXZT25t7E-pwa-QYqY88cfS1gnlSPUp6k8mf_ceVeJ71dv3eQt5zCg&usqp=CAc', id: '144' },
+      { type: 'image', url: 'https://storage.googleapis.com/blog-files-gcs-prod/uploads/sites/14/2020/11/o-que-e-suspensao-ar.jpg',id: '144' },
       { type: 'video', url: require('../assets/video.mp4'), id: '20'},
     ]
   },
-//   {
-//     id:'892',
-//     name:'suspen ar',
-//     price: '60.000',
-//     media: [
-//       { type: 'image', url: 'https://rodasdeligaleve.com.br/media/greenrivers/webp/catalog/product/cache/25a46c22a089dcc7f68b120fb23ef518/H/I/HILUX-GD1.webp', id: '3' },
-//       { type: 'video', url: require('../assets/video1.mp4'), id: '4'},
-//     ]
-//   },
-//   {
-//     id:'8765',
-//     name:'Suspensao',
-//     price: '3000',
-//     brand: 'castor',
-//     media: [
-//       { type: 'image', url: 'https://http2.mlstatic.com/D_NQ_NP_692762-MLB50484299700_062022-V.webp', id: '7' },
-//     //   { type: 'video', url: require('../assets/video.mp4'), id: '8'},
-//     ]
-//   }
 ];
 
 export const Ads = [
@@ -132,7 +113,7 @@ export const Services = [
     country: "DF",
     price: '3000',
     media: [
-      { type: 'image', url: 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTjHl0Z4AYO_2QbLdRz7X6w2mhV2YI_sXA_iuQjoLJUk0pR1InXM6gE2JWhgw6EY6X3BXZT25t7E-pwa-QYqY88cfS1gnlSPUp6k8mf_ceVeJ71dv3eQt5zCg&usqp=CAc', id: '144' },
+      { type: 'image', url: 'https://cdn-gacln.nitrocdn.com/gKHRVHijxuMMWFODRsQZNqgxuzRAWfmP/assets/static/optimized/rev-0f8315b/wp-content/uploads/2022/06/guincho-curitiba_galeria-12-guincho-24-horas-curitiba-1-1080x1080.jpg', id: '144' },
       { type: 'video', url: require('../assets/video.mp4'), id: '20'},
     ]
   },
@@ -147,7 +128,7 @@ export const Services = [
     country: "DF",
     price: '3000',
     media: [
-      { type: 'image', url: 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTjHl0Z4AYO_2QbLdRz7X6w2mhV2YI_sXA_iuQjoLJUk0pR1InXM6gE2JWhgw6EY6X3BXZT25t7E-pwa-QYqY88cfS1gnlSPUp6k8mf_ceVeJ71dv3eQt5zCg&usqp=CAc', id: '144' },
+      { type: 'image', url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvM-SIklfZ7fqzSaSGpTNIOSFurCjJpzBxxw&usqp=CAU', id: '144' },
       { type: 'video', url: require('../assets/video.mp4'), id: '20'},
     ]
   },

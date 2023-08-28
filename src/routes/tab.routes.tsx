@@ -10,11 +10,9 @@ import { AntDesign, FontAwesome5, Ionicons } from '@expo/vector-icons';
 import { StackCars } from './stackCars.routes';
 import { StackProducts } from './stackProducts.routes'
 
-import { SignIn } from '../screens/Unauthenticated/SignIn';
 import { ButtonNewSale } from '../components/ButtonNewSale';
 import { StackCreatedAd } from './stackCreatedAd.routes';
 import { StackMyAds } from './stackMyAds.routes';
-import { Profile } from '../screens/Authenticated/Profile';
 import { StackServices } from './stackServices.routes';
 
 

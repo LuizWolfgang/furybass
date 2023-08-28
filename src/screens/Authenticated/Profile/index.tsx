@@ -32,7 +32,6 @@ import {
 
 
 export function Profile(){
-
   const [option, setOption] = useState<'dataEdit' | 'passwordEdit'>('dataEdit');
   const [avatar, setAvatar] = useState();
   const [name, setName] = useState();
@@ -120,7 +119,7 @@ export function Profile(){
           </PhotoContainer>
         </ContentPhotoProfile>
 
-        <Content style={{ marginBottom: useBottomTabBarHeight()}}>
+        <Content>
           <Options>
             <Option
               active={option === 'dataEdit'}
@@ -136,7 +135,7 @@ export function Profile(){
             </Option>
           </Options>
           {
-            option === 'dataEdit' ?
+            option && option === 'dataEdit' ?
               <Section>
                 <Input
                   iconName="user"

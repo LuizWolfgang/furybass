@@ -1,13 +1,14 @@
 import styled from "styled-components/native";
 
 export const Container = styled.View`
-    color: ${({ theme }) => theme.colors.placeholder};
+
     justify-content: center;
 `;
 
 export const HeaderContainer = styled.View`
     align-items: flex-end;
     margin-right: 15px;
+
 `;
 
 export const TitleText = styled.Text`
@@ -28,7 +29,7 @@ export const Touch = styled.TouchableOpacity`
 `;
 
 export const Text = styled.Text`
-    font-size: 22px;
-    font-family: ${({ theme }) => theme.fonts.primary_500};
+    font-size: 20px;
+    font-family: ${({ theme }) => theme.fonts.secondary_600};
     color: ${({ theme }) => theme.colors.text};
 `;
