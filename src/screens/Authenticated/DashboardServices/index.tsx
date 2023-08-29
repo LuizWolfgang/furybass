@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { FlatList, Platform } from "react-native";
 
 import { SearchInput } from "../../../components/SearchInput";
+import { CardServices } from "../../../components/CardServices";
+import { ModalSelect } from "../../../components/ModalSelect";
 
-import { FlatList, Platform } from "react-native";
 import { Dimensions, View } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
@@ -23,12 +25,17 @@ import {
   TextEmpty
 } from "./styles";
 
-import { TouchableOpacity } from "react-native-gesture-handler";
+import {
+  BottomSheetModal,
+  BottomSheetModalProvider,
+} from "@gorhom/bottom-sheet";
+
+import { GestureHandlerRootView, ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import { DrawerActions, useNavigation } from "@react-navigation/native";
 
 import { Services } from "../../../mocks";
 import { useFocusScreen } from "../../../hooks/useFocusScreen";
-import { CardServices } from "../../../components/CardServices";
+
 
 //Dimensions
 const { height: windowHeight } = Dimensions.get("window");
@@ -43,6 +50,19 @@ export function DashboardServices() {
   const navigation = useNavigation();
 
 
+  const [isOpen, setIsOpen] = useState(false);
+
+  const bottomSheetModalRef = useRef(null);
+
+  const snapPoints = ["80%", "85%", "90%"];
+
+  const handlePresentModal = () => {
+    bottomSheetModalRef.current?.present();
+    setTimeout(() => {
+      setIsOpen(true);
+    }, 100);
+  }
+
   //filter flat list
   const filterData = (searchText) => {
     const newData = Services.filter((item) => {
@@ -53,87 +73,119 @@ export function DashboardServices() {
     setFilteredData(newData);
   };
 
-  return (
-    <Container>
-      <Header>
-        <HeaderContent>
-          <SearchInput onFilter={filterData} type="Services" />
-          <ContentMenu>
-            <TouchableOpacity
-              onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
-            >
-              <Ionicons name="menu" size={30} color="white" />
-            </TouchableOpacity>
-          </ContentMenu>
-        </HeaderContent>
-      </Header>
+  const handleSelectValueModal = (value) => {
+    console.log(value);
+    bottomSheetModalRef.current?.close()
+  }
 
-      <Content>
-        <OffsetYProvider
-          columnsPerRow={1}
-          listItemHeight={boxHeight}
-          centerYStart={(windowHeight * 0.7) / 4}
-          centerYEnd={(windowHeight * 0.55) / 1}
-        >
-          {({ setOffsetY }) => (
-            <FlatList
-              data={filteredData}
-              contentContainerStyle={{ paddingTop:20, paddingBottom:50 }}
-              onScroll={(ev) => {
-                setOffsetY(ev.nativeEvent.contentOffset.y);
-              }}
-              showsVerticalScrollIndicator={false}
-              ListEmptyComponent={(
-                <ViewEmptyComponent>
-                  <TextEmpty>Ops, anúncio não encontrado ☹️</TextEmpty>
-                </ViewEmptyComponent>
-              )}
-              keyExtractor={(item) => item.id}
-              renderItem={({ index, item }) => (
-                <IndexProvider index={index}>
-                  {() => (
-                    <View
-                      style={{
-                        height: boxHeight,
-                      }}
-                    >
-                      <InCenterConsumer>
-                        {({ isInCenter }) =>
-                          isInCenter ? (
-                            <ContentProducts>
-                              <CardServices
-                                data={item}
-                                paused={
-                                  false
-                                }
-                                playFocus={
-                                  isPlaying
-                                }
-                              />
-                            </ContentProducts>
-                          ) : (
-                            <ContentProducts>
-                              <CardServices
-                                data={item}
-                                paused={
-                                  true
-                                }
-                                playFocus={
-                                  isPlaying
-                                }
-                              />
-                            </ContentProducts>
-                          )
-                        }
-                      </InCenterConsumer>
-                    </View>
+  return (
+
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <BottomSheetModalProvider>
+        <Container>
+          <Header>
+            <HeaderContent>
+              <SearchInput
+                onFilter={filterData}
+                type="Services"
+                handleOpenModal={handlePresentModal}
+              />
+              <ContentMenu>
+                <TouchableOpacity
+                  onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+                >
+                  <Ionicons name="menu" size={30} color="white" />
+                </TouchableOpacity>
+              </ContentMenu>
+            </HeaderContent>
+          </Header>
+
+          <Content>
+            <OffsetYProvider
+              columnsPerRow={1}
+              listItemHeight={boxHeight}
+              centerYStart={(windowHeight * 0.7) / 4}
+              centerYEnd={(windowHeight * 0.55) / 1}
+            >
+              {({ setOffsetY }) => (
+                <FlatList
+                  data={filteredData}
+                  contentContainerStyle={{ paddingTop:20, paddingBottom:50 }}
+                  onScroll={(ev) => {
+                    setOffsetY(ev.nativeEvent.contentOffset.y);
+                  }}
+                  showsVerticalScrollIndicator={false}
+                  ListEmptyComponent={(
+                    <ViewEmptyComponent>
+                      <TextEmpty>Ops, anúncio não encontrado ☹️</TextEmpty>
+                    </ViewEmptyComponent>
                   )}
-                </IndexProvider>
+                  keyExtractor={(item) => item.id}
+                  renderItem={({ index, item }) => (
+                    <IndexProvider index={index}>
+                      {() => (
+                        <View
+                          style={{
+                            height: boxHeight,
+                          }}
+                        >
+                          <InCenterConsumer>
+                            {({ isInCenter }) =>
+                              isInCenter ? (
+                                <ContentProducts>
+                                  <CardServices
+                                    data={item}
+                                    paused={
+                                      false
+                                    }
+                                    playFocus={
+                                      isPlaying
+                                    }
+                                  />
+                                </ContentProducts>
+                              ) : (
+                                <ContentProducts>
+                                  <CardServices
+                                    data={item}
+                                    paused={
+                                      true
+                                    }
+                                    playFocus={
+                                      isPlaying
+                                    }
+                                  />
+                                </ContentProducts>
+                              )
+                            }
+                          </InCenterConsumer>
+                        </View>
+                      )}
+                    </IndexProvider>
+                  )}
+                />
               )}
-            />
-          )}
-        </OffsetYProvider>
-      </Content>
-    </Container>
+            </OffsetYProvider>
+          </Content>
+          <BottomSheetModal
+            ref={bottomSheetModalRef}
+            index={1}
+            snapPoints={snapPoints}
+            backgroundStyle={{ borderRadius: 50 }}
+            onDismiss={() => setIsOpen(false)}
+          >
+            <ScrollView
+              contentContainerStyle={{  paddingBottom: 30}}
+              showsVerticalScrollIndicator={false}
+            >
+              <ModalSelect
+                handleSelectValue={handleSelectValueModal}
+                type="Services"
+              />
+            </ScrollView>
+          </BottomSheetModal>
+        </Container>
+      </BottomSheetModalProvider>
+    </GestureHandlerRootView>
+
   );
 }

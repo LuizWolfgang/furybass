@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import { useRef, useState } from "react";
 import { FlatList, Platform } from "react-native";
-import { Dimensions, View } from "react-native";
-import Ionicons from "@expo/vector-icons/Ionicons";
 
 import { CardCars } from "../../../components/CardCars";
 import { SearchInput } from "../../../components/SearchInput";
+import { ModalSelect } from "../../../components/ModalSelect";
+
+import { Dimensions, View } from "react-native";
+import Ionicons from "@expo/vector-icons/Ionicons";
+
+
 import { useFocusScreen } from "../../../hooks/useFocusScreen";
 
 import {
@@ -24,10 +28,16 @@ import {
   TextEmpty,
 } from "./styles";
 
-import { TouchableOpacity } from "react-native-gesture-handler";
+import {
+  BottomSheetModal,
+  BottomSheetModalProvider,
+} from "@gorhom/bottom-sheet";
+
+import { GestureHandlerRootView, ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import { DrawerActions, useNavigation } from "@react-navigation/native";
 
 import { data } from "../../../mocks";
+
 
 const { height: windowHeight } = Dimensions.get("window");
 const windowPlatform = Platform.OS === "ios" ? 1.5 : 1.33;
@@ -40,6 +50,19 @@ export function DashboardCars() {
   const {isPlaying} = useFocusScreen();
   const navigation = useNavigation();
 
+  const [isOpen, setIsOpen] = useState(false);
+
+  const bottomSheetModalRef = useRef(null);
+
+  const snapPoints = ["25%", "50%", "80%"];
+
+  const handlePresentModal = () => {
+    bottomSheetModalRef.current?.present();
+    setTimeout(() => {
+      setIsOpen(true);
+    }, 100);
+  }
+
   //filter flat list
   const filterData = (searchText) => {
     const newData = data.filter((item) => {
@@ -50,86 +73,119 @@ export function DashboardCars() {
     setFilteredData(newData);
   };
 
+
+  const handleSelectValueModal = (value) => {
+    console.log(value);
+    bottomSheetModalRef.current?.close()
+  }
+
   return (
-    <Container>
-      <Header>
-        <HeaderContent>
-          <SearchInput onFilter={filterData} type="Cars"/>
-          <ContentMenu>
-            <TouchableOpacity
-              onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <BottomSheetModalProvider>
+        <Container>
+          <Header>
+            <HeaderContent>
+              <SearchInput
+                onFilter={filterData}
+                type="Cars"
+                handleOpenModal={handlePresentModal}
+              />
+              <ContentMenu>
+                <TouchableOpacity  onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
+                  <Ionicons name="menu" size={30} color="white" />
+                </TouchableOpacity>
+              </ContentMenu>
+            </HeaderContent>
+          </Header>
+          <Content>
+            <OffsetYProvider
+              columnsPerRow={1}
+              listItemHeight={boxHeight}
+              centerYStart={(windowHeight * 1) / 3}
+              centerYEnd={(windowHeight * 2) / 3}
             >
-              <Ionicons name="menu" size={30} color="white" />
-            </TouchableOpacity>
-          </ContentMenu>
-        </HeaderContent>
-      </Header>
-      <Content>
-        <OffsetYProvider
-          columnsPerRow={1}
-          listItemHeight={boxHeight}
-          centerYStart={(windowHeight * 1) / 3}
-          centerYEnd={(windowHeight * 2) / 3}
-        >
-          {({ setOffsetY }) => (
-            <FlatList
-              data={filteredData}
-              contentContainerStyle={{ paddingTop:20 }}
-              onScroll={(ev) => {
-                setOffsetY(ev.nativeEvent.contentOffset.y);
-              }}
-              keyExtractor={(item) => item.id}
-              showsVerticalScrollIndicator={false}
-              ListEmptyComponent={(
-                <ViewEmptyComponent>
-                  <TextEmpty>Ops, anúncio não encontrado ☹️</TextEmpty>
-                </ViewEmptyComponent>
-              )}
-              renderItem={({ index, item }) => (
-                <IndexProvider index={index}>
-                  {() => (
-                    <View
-                      style={{
-                        height: boxHeight,
-                      }}
-                    >
-                      <InCenterConsumer>
-                        {({ isInCenter }) =>
-                          isInCenter ? (
-                            <ContentCars>
-                              <CardCars
-                                data={item}
-                                paused={
-                                  false
-                                }
-                                playFocus={
-                                  isPlaying
-                                }
-                              />
-                            </ContentCars>
-                          ) : (
-                            <ContentCars>
-                              <CardCars
-                                data={item}
-                                paused={
-                                  true
-                                }
-                                playFocus={
-                                  isPlaying
-                                }
-                              />
-                            </ContentCars>
-                          )
-                        }
-                      </InCenterConsumer>
-                    </View>
+              {({ setOffsetY }) => (
+                <FlatList
+                  data={filteredData}
+                  contentContainerStyle={{ paddingTop:20 }}
+                  onScroll={(ev) => {
+                    setOffsetY(ev.nativeEvent.contentOffset.y);
+                  }}
+
+                  keyExtractor={(item) => item.id}
+                  showsVerticalScrollIndicator={false}
+                  scrollEnabled={!isOpen}
+                  ListEmptyComponent={(
+                    <ViewEmptyComponent>
+                      <TextEmpty>Ops, anúncio não encontrado ☹️</TextEmpty>
+                    </ViewEmptyComponent>
                   )}
-                </IndexProvider>
+                  renderItem={({ index, item }) => (
+                    <IndexProvider index={index}>
+                      {() => (
+                        <View
+                          style={{
+                            height: boxHeight,
+                          }}
+                        >
+                          <InCenterConsumer>
+                            {({ isInCenter }) =>
+                              isInCenter ? (
+                                <ContentCars>
+                                  <CardCars
+                                    data={item}
+                                    paused={
+                                      false
+                                    }
+                                    playFocus={
+                                      isPlaying
+                                    }
+                                  />
+                                </ContentCars>
+                              ) : (
+                                <ContentCars>
+                                  <CardCars
+                                    data={item}
+                                    paused={
+                                      true
+                                    }
+                                    playFocus={
+                                      isPlaying
+                                    }
+                                  />
+                                </ContentCars>
+                              )
+                            }
+                          </InCenterConsumer>
+                        </View>
+                      )}
+                    </IndexProvider>
+                  )}
+                />
               )}
-            />
-          )}
-        </OffsetYProvider>
-      </Content>
-    </Container>
+            </OffsetYProvider>
+          </Content>
+          <BottomSheetModal
+            ref={bottomSheetModalRef}
+            index={1}
+            snapPoints={snapPoints}
+            backgroundStyle={{ borderRadius: 50 }}
+            onDismiss={() => setIsOpen(false)}
+          >
+            <ScrollView
+              contentContainerStyle={{paddingBottom:0}}
+              showsVerticalScrollIndicator={false}
+            >
+              <ModalSelect
+                handleSelectValue={handleSelectValueModal}
+                type="Cars"
+              />
+            </ScrollView>
+          </BottomSheetModal>
+        </Container>
+      </BottomSheetModalProvider>
+    </GestureHandlerRootView>
   );
 }
+

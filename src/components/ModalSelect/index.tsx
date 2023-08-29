@@ -15,15 +15,13 @@ import { optionsFilterCar, optionsFilterProducts, optionsFilterService } from '.
 
 
 type ContentModalProps = {
-    onDismiss: () => void
-    handleSelectCountry: (country: string) => void
+    handleSelectValue: (value: string) => void
     type?: 'Created' | 'Cars' | 'Products' | 'Services'
 }
-export function ModalSelect({ onDismiss, handleSelectCountry, type}: ContentModalProps ){
+export function ModalSelect({ handleSelectValue, type}: ContentModalProps ){
 
-  const handleSelectCountryModal = (country: string) => {
-    handleSelectCountry(country);
-    onDismiss();
+  const handleSelectValueModal = (value: string) => {
+    handleSelectValue(value);
   }
 
   const RenderForm = ({ value }) => {
@@ -37,7 +35,7 @@ export function ModalSelect({ onDismiss, handleSelectCountry, type}: ContentModa
               return (
                 <Content key={optionFilter.key}>
                   {/* <Feather name={option.icon} size={24}/> */}
-                  <Touch onPress={() => handleSelectCountryModal(optionFilter.key)}>
+                  <Touch onPress={() => handleSelectValueModal(optionFilter.name)}>
                     <Text key={optionFilter.key}>
                       {optionFilter.name}
                     </Text>
@@ -55,7 +53,7 @@ export function ModalSelect({ onDismiss, handleSelectCountry, type}: ContentModa
             optionsFilterService.map((optionFilter) => {
               return (
                 <Content key={optionFilter.key}>
-                  <Touch onPress={() => handleSelectCountryModal(optionFilter.key)}>
+                  <Touch onPress={() => handleSelectValueModal(optionFilter.name)}>
                     <Text key={optionFilter.key}>
                       {optionFilter.name}
                     </Text>
@@ -74,7 +72,7 @@ export function ModalSelect({ onDismiss, handleSelectCountry, type}: ContentModa
               return (
                 <Content key={option.key}>
                   {/* <Feather name={option.icon} size={24}/> */}
-                  <Touch onPress={() => handleSelectCountryModal(option.key)}>
+                  <Touch onPress={() => handleSelectValueModal(option.name)}>
                     <Text key={option.key}>
                       {option.name}
                     </Text>
@@ -91,13 +89,13 @@ export function ModalSelect({ onDismiss, handleSelectCountry, type}: ContentModa
   return (
     <Container>
       <HeaderContainer>
-        <CloseButton onPress={() => onDismiss()}>
+        {/* <CloseButton onPress={() => onDismiss()}`>
           <Feather name="x-circle" size={24} color={theme.colors.main} />
-        </CloseButton>
+        </CloseButton> */}
       </HeaderContainer>
       <ScrollView
-      showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ justifyContent: 'center', alignItems: 'center', paddingBottom: 80}}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ flexGrow:1, justifyContent: 'center', alignItems: 'center', paddingBottom: 10}}
       >
         <RenderForm value={type ? type : undefined} />
 
