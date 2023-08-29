@@ -115,6 +115,7 @@ export function DashboardServices() {
                     setOffsetY(ev.nativeEvent.contentOffset.y);
                   }}
                   showsVerticalScrollIndicator={false}
+                  scrollEnabled={!isOpen}
                   ListEmptyComponent={(
                     <ViewEmptyComponent>
                       <TextEmpty>Ops, anúncio não encontrado ☹️</TextEmpty>
