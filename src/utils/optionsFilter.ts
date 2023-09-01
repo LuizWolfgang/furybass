@@ -1,4 +1,4 @@
-export const optionsFilterCar = [
+export const optionsFilterCars = [
   {
     key: "1",
     name: 'Carro montado',
@@ -19,6 +19,7 @@ export const optionsFilterCar = [
     name: 'Moto',
     type: "Veiculos"
   },
+
 ]
 
 export const optionsFilterProducts = [

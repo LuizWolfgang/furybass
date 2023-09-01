@@ -35,11 +35,12 @@ import { DrawerActions, useNavigation } from "@react-navigation/native";
 
 import { Products } from "../../../mocks";
 import { useFocusScreen } from "../../../hooks/useFocusScreen";
+import theme from "../../../styles/theme";
 
 
 //Dimensions
 const { height: windowHeight } = Dimensions.get("window");
-const windowPlatform = Platform.OS === "ios" ? 1.5 : 1.33;
+const windowPlatform = Platform.OS === "ios" ? 1.5 : 1.22;
 const boxHeight = windowHeight / windowPlatform;
 
 export function DashboardProducts() {
@@ -172,7 +173,7 @@ export function DashboardProducts() {
             ref={bottomSheetModalRef}
             index={1}
             snapPoints={snapPoints}
-            backgroundStyle={{ borderRadius: 50 }}
+            backgroundStyle={{ borderRadius: 50, backgroundColor: `${theme.colors.line}` }}
             onDismiss={() => setIsOpen(false)}
           >
             <ScrollView

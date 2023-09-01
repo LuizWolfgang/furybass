@@ -35,11 +35,12 @@ import { DrawerActions, useNavigation } from "@react-navigation/native";
 
 import { Services } from "../../../mocks";
 import { useFocusScreen } from "../../../hooks/useFocusScreen";
+import theme from "../../../styles/theme";
 
 
 //Dimensions
 const { height: windowHeight } = Dimensions.get("window");
-const windowPlatform = Platform.OS === "ios" ? 1.5 : 1.33;
+const windowPlatform = Platform.OS === "ios" ? 1.5 : 1.22;
 const boxHeight = windowHeight / windowPlatform;
 
 export function DashboardServices() {
@@ -115,6 +116,7 @@ export function DashboardServices() {
                     setOffsetY(ev.nativeEvent.contentOffset.y);
                   }}
                   showsVerticalScrollIndicator={false}
+                  scrollEnabled={!isOpen}
                   ListEmptyComponent={(
                     <ViewEmptyComponent>
                       <TextEmpty>Ops, anúncio não encontrado ☹️</TextEmpty>
@@ -170,11 +172,11 @@ export function DashboardServices() {
             ref={bottomSheetModalRef}
             index={1}
             snapPoints={snapPoints}
-            backgroundStyle={{ borderRadius: 50 }}
+            backgroundStyle={{ borderRadius: 50, backgroundColor: `${theme.colors.line}` }}
             onDismiss={() => setIsOpen(false)}
           >
             <ScrollView
-              contentContainerStyle={{  paddingBottom: 30}}
+              contentContainerStyle={{ paddingBottom: 30 }}
               showsVerticalScrollIndicator={false}
             >
               <ModalSelect

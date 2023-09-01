@@ -8,10 +8,13 @@ import {
   Touch,
   Text
 } from './styles';
-import theme from '../../styles/theme';
+
 import { ScrollView } from 'react-native';
 import { brazilianStates } from '../../utils/brazilianStates';
-import { optionsFilterCar, optionsFilterProducts, optionsFilterService } from '../../utils/optionsFilter';
+import {
+  optionsFilterCars,
+  optionsFilterProducts,
+  optionsFilterService } from '../../utils/optionsFilter';
 
 
 type ContentModalProps = {
@@ -27,6 +30,24 @@ export function ModalSelect({ handleSelectValue, type}: ContentModalProps ){
   const RenderForm = ({ value }) => {
     switch (value) {
     case 'Cars':
+      return (
+        <>
+          {
+            optionsFilterCars.map((optionFilter) => {
+              return (
+                <Content key={optionFilter.key}>
+                  {/* <Feather name={option.icon} size={24}/> */}
+                  <Touch onPress={() => handleSelectValueModal(optionFilter.name)}>
+                    <Text key={optionFilter.key}>
+                      {optionFilter.name}
+                    </Text>
+                  </Touch>
+                </Content>
+              )
+            })
+          }
+        </>
+      );
     case 'Products':
       return (
         <>
