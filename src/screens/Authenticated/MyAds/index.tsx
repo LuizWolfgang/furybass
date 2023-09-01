@@ -32,7 +32,7 @@ import { CardAds } from "../../../components/CardAds";
 
 //Dimensions
 const { height: windowHeight } = Dimensions.get("window");
-const windowPlatform = Platform.OS === "ios" ? 1.5 : 1.33;
+const windowPlatform = Platform.OS === "ios" ? 1.5 : 1.22;
 const boxHeight = windowHeight / windowPlatform;
 
 export function Myads() {

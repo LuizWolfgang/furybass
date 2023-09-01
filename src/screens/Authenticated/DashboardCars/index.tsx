@@ -37,10 +37,11 @@ import { GestureHandlerRootView, ScrollView, TouchableOpacity } from "react-nati
 import { DrawerActions, useNavigation } from "@react-navigation/native";
 
 import { data } from "../../../mocks";
+import theme from "../../../styles/theme";
 
 
 const { height: windowHeight } = Dimensions.get("window");
-const windowPlatform = Platform.OS === "ios" ? 1.5 : 1.33;
+const windowPlatform = Platform.OS === "ios" ? 1.5 : 1.22;
 const boxHeight = windowHeight / windowPlatform;
 
 export function DashboardCars() {
@@ -170,7 +171,7 @@ export function DashboardCars() {
             ref={bottomSheetModalRef}
             index={1}
             snapPoints={snapPoints}
-            backgroundStyle={{ borderRadius: 50 }}
+            backgroundStyle={{ borderRadius: 50, backgroundColor: `${theme.colors.line}` }}
             onDismiss={() => setIsOpen(false)}
           >
             <ScrollView
