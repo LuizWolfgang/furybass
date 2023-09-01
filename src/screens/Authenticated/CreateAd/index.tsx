@@ -164,6 +164,9 @@ export function CreateAd(){
                 data={images}
                 ref={flatListRef}
                 onViewableItemsChanged={indexChanged.current}
+                onContentSizeChange={() => {
+                  flatListRef.current.scrollToEnd();
+                }}
                 viewabilityConfig={{
                   itemVisiblePercentThreshold: 20,
                 }}

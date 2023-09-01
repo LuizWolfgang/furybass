@@ -108,7 +108,7 @@ export function EditAd(){
     if (!result.canceled) {
       setImages(images.concat(result.assets));
       console.log('result.assets', result.assets)
-      flatListRef.current.scrollToEnd({animated: true });
+      flatListRef.current.scrollToEnd();
     }
   };
 
@@ -196,6 +196,9 @@ export function EditAd(){
                 data={images}
                 ref={flatListRef}
                 onViewableItemsChanged={indexChanged.current}
+                onContentSizeChange={() => {
+                  flatListRef.current.scrollToEnd();
+                }}
                 viewabilityConfig={{
                   itemVisiblePercentThreshold: 20,
                 }}
