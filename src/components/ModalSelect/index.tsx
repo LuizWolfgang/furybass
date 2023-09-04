@@ -6,7 +6,8 @@ import {
   Content,
   CloseButton,
   Touch,
-  Text
+  Text,
+  TitleText
 } from './styles';
 
 import { ScrollView } from 'react-native';
@@ -15,6 +16,7 @@ import {
   optionsFilterCars,
   optionsFilterProducts,
   optionsFilterService } from '../../utils/optionsFilter';
+import theme from '../../styles/theme';
 
 
 type ContentModalProps = {
@@ -110,13 +112,13 @@ export function ModalSelect({ handleSelectValue, type}: ContentModalProps ){
   return (
     <Container>
       <HeaderContainer>
-        {/* <CloseButton onPress={() => onDismiss()}`>
-          <Feather name="x-circle" size={24} color={theme.colors.main} />
-        </CloseButton> */}
+        <CloseButton>
+          {type ? <TitleText>Selecione o filtro: </TitleText> : <TitleText>Selecione o estado: </TitleText> }
+        </CloseButton>
       </HeaderContainer>
       <ScrollView
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ flexGrow:1, justifyContent: 'center', alignItems: 'center', paddingBottom: 10}}
+        contentContainerStyle={{ flexGrow:1, justifyContent: 'center', alignItems: 'center', paddingBottom: 40}}
       >
         <RenderForm value={type ? type : undefined} />
 

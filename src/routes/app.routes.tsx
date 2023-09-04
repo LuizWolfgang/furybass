@@ -2,7 +2,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import { TabRoutes } from "./tab.routes";
 import { useWindowDimensions } from "react-native";
 import { Profile } from "../screens/Authenticated/Profile";
-import { TermsOfUse } from "../screens/Authenticated/ TermsOfUse";
+import { TermsOfUse } from "../screens/Authenticated/TermsOfUse";
 
 const Drawer = createDrawerNavigator();
 

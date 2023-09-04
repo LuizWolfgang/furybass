@@ -26,25 +26,24 @@ export function ServicesForm({dataForm}: dataFormProps ){
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
   const [country, setCountry] = useState('')
 
-  // variables
-  const snapPoints = useMemo(() => ['25%', '50%'], []);
+  // MODAL
+  const snapPoints = useMemo(() => ['25%', '80%'], []);
 
   // callbacks
   const handlePresentModalPress = useCallback(() => {
     bottomSheetModalRef.current?.present();
   }, []);
 
-  const handleDismissModalPress = useCallback(() => {
-    bottomSheetModalRef.current?.close();
-  },[])
-
   const handleSheetChanges = useCallback((index: number) => {
     // console.log('handleSheetChanges', index);
   }, []);
 
-  const handleSelectCountry = (country: string) => {
-    setCountry(country)
+  const handleSelectValueModal = (value) => {
+    console.log(value);
+    setCountry(value);
+    bottomSheetModalRef.current?.close()
   }
+
   const vehicleSchema = yup.object({
     title: yup.string().required('Informe o título'),
     description:  yup.string().required('Informe a descrição'),
@@ -152,8 +151,7 @@ export function ServicesForm({dataForm}: dataFormProps ){
           >
             <>
               <ModalSelect
-                handleSelectCountry={handleSelectCountry}
-                onDismiss={handleDismissModalPress}
+                handleSelectValue={handleSelectValueModal}
               />
             </>
           </BottomSheetModal>
