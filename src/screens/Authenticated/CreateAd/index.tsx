@@ -91,6 +91,7 @@ export function CreateAd(){
   }
 
   const pickImage = async () => {
+
     const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       aspect: [4, 3],
@@ -102,6 +103,9 @@ export function CreateAd(){
       flatListRef.current.scrollToEnd({animated: true });
     }
   };
+
+  console.log(images[0])
+
 
   //Renderiza os formularios
   const RenderForm = ({ value }) => {

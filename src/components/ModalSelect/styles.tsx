@@ -6,18 +6,24 @@ export const Container = styled.View`
 `;
 
 export const HeaderContainer = styled.View`
-    align-items: flex-end;
-    margin-right: 15px;
+    justify-content: center;
+    align-items: center;
+    margin: 15px;
 
 `;
+
 
 export const TitleText = styled.Text`
     font-size: 20px;
-    font-family: ${({ theme }) => theme.fonts.secondary_500};
-    color: ${({ theme }) => theme.colors.header};
+    font-family: ${({ theme }) => theme.fonts.primary_700};
+    color: ${({ theme }) => theme.colors.success};
 `;
 
-export const CloseButton = styled.TouchableOpacity``;
+export const CloseButton = styled.View`
+    justify-content: center;
+    align-items: center;
+
+`;
 
 export const Content = styled.View`
     margin: 5px;
@@ -29,7 +35,7 @@ export const Touch = styled.TouchableOpacity`
 `;
 
 export const Text = styled.Text`
-    font-size: 20px;
+    font-size: 18px;
     font-family: ${({ theme }) => theme.fonts.secondary_600};
     color: ${({ theme }) => theme.colors.text};
 `;

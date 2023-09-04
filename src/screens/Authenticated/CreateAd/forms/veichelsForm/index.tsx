@@ -39,23 +39,21 @@ export function VeichleForm({dataForm} : dataFormProps){
   const [country, setCountry] = useState('')
 
   //  MODAL
-  const snapPoints = useMemo(() => ['25%', '50%'], []);
+  const snapPoints = useMemo(() => ['25%', '80%'], []);
 
   // callbacks
   const handlePresentModalPress = useCallback(() => {
     bottomSheetModalRef.current?.present();
   }, []);
 
-  const handleDismissModalPress = useCallback(() => {
-    bottomSheetModalRef.current?.close();
-  },[])
-
   const handleSheetChanges = useCallback((index: number) => {
     // console.log('handleSheetChanges', index);
   }, []);
 
-  const handleSelectCountry = (country: string) => {
-    setCountry(country)
+  const handleSelectValueModal = (value) => {
+    console.log(value);
+    setCountry(value);
+    bottomSheetModalRef.current?.close()
   }
   // END MODAL
 
@@ -84,7 +82,7 @@ export function VeichleForm({dataForm} : dataFormProps){
 
   async function onSubmit(data: FormDataProps) {
     console.log('VeichleForm', data, country)
-    navigation.navigate('teste')
+    // navigation.navigate('teste')
   }
 
   useEffect(() => {
@@ -204,8 +202,7 @@ export function VeichleForm({dataForm} : dataFormProps){
           >
             <>
               <ModalSelect
-                handleSelectCountry={handleSelectCountry}
-                onDismiss={handleDismissModalPress}
+                handleSelectValue={handleSelectValueModal}
               />
             </>
           </BottomSheetModal>
