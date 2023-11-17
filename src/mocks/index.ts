@@ -72,11 +72,13 @@ export const Products = [
 export const Ads = [
   {
     id: '34g5st',
-    name: 'saveiro trend',
+    title: 'saveiro trend',
     type: 'Veiculos',
     description: 'oi',
     number: 'oi',
     city: 'brasilia',
+    km: '3000',
+    year: '2009',
     country: "DF",
     price: '3000',
     media: [
@@ -86,7 +88,7 @@ export const Ads = [
   },
   {
     id: '34gst',
-    name: '6X9 ZETTA',
+    title: '6X9 ZETTA',
     type: 'Produtos',
     description: 'oi',
     number: 'oi',

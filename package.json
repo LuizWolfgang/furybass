@@ -25,6 +25,7 @@
     "@types/react": "~18.0.27",
     "@types/styled-components": "^5.1.26",
     "@types/styled-components-react-native": "^5.2.1",
+    "axios": "^1.6.0",
     "expo": "^48.0.0",
     "expo-app-loading": "^2.1.1",
     "expo-av": "^13.2.1",
