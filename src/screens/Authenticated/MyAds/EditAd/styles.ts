@@ -150,7 +150,7 @@ export const Errors = styled.Text`
   font-family: ${({ theme }) => theme.fonts.secondary_600};
   color: ${({ theme }) => theme.colors.background_secondary};
 
-  margin-bottom: 24px;
+  margin-bottom: 5px;
 `
 export const Footer = styled.View`
   width: 100%

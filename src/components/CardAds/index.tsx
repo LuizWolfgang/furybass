@@ -40,7 +40,7 @@ export function CardAds({ data , paused, playFocus}: CardProps){
       </CarrouselView>
       <InfoCars>
         <UserGreeting>
-          {data.name}
+          {data.title}
         </UserGreeting>
         <Price>
          R$: {data.price}

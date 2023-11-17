@@ -26,6 +26,7 @@ import {
   Form,
   CardAddImage,
   TextInfoImage,
+  Errors,
 } from './styles';
 
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -37,7 +38,7 @@ import { Entypo } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 
 import { useFocusScreen } from '../../../../hooks/useFocusScreen';
-import {  useForm } from 'react-hook-form';
+import {  Controller, useForm } from 'react-hook-form';
 import { ResizeMode, Video } from 'expo-av';
 
 import Animated, { FlipOutXDown, ZoomInRight } from 'react-native-reanimated';
@@ -48,16 +49,19 @@ import { Button } from '../../../../components/Button';
 import { VeichleForm } from '../../CreateAd/forms/veichelsForm';
 import { ProductsForm } from '../../CreateAd/forms/productsForm';
 import { ServicesForm } from '../../CreateAd/forms/servicesForm';
+import { Input } from '../../../../components/Input';
+import theme from '../../../../styles/theme';
 
 type FormDataProps = {
-    email: string;
-    password: string;
+    title: string;
+    description: string;
+    number: string;
   }
 
 export function EditAd(){
   const route = useRoute()
   const { data } = route.params ? route.params : '' as any;
-
+  console.log('AAAA', data)
   const [images, setImages] = useState([]);
   const [imageIndex, setimageIndex] = useState(0);
 
@@ -69,13 +73,21 @@ export function EditAd(){
   const video = useRef(null)
   const length = images.length
 
-  const createdAt = yup.object({
-    email: yup.string().required('Informe o email'),
-    password:  yup.string().required('Informe a senha'),
-  }).required();
+  const editAt = yup
+    .object({
+      title: yup.string().required("Informe o título:"),
+      description: yup.string().required("Informe a descrição:"),
+      number: yup.string().required("Informe o número:"),
+    })
+    .required();
 
   const { control, handleSubmit, formState: { errors } } = useForm<FormDataProps>({
-    resolver: yupResolver(createdAt)
+    resolver: yupResolver(editAt),
+    defaultValues: {
+      title: data ? data.title : '',
+      description: data ? data.description : '',
+      number: data ? data.number : '',
+    }
   });
 
   async function onSubmit(data: FormDataProps) {
@@ -277,11 +289,53 @@ export function EditAd(){
         </Animated.View>
         }
         <Form>
+          {errors.title && <Errors>{errors.title.message}</Errors>}
+          <Controller
+            control={control}
+            name="title"
+            render={({ field: { onChange, onBlur, value } }) => (
+              <Input
+                placeholder="Titulo do anúncio:"
+                placeholderTextColor={theme.colors.placeholder}
+                onChangeText={onChange}
+                defaultValue={value}
+              />
+            )}
+          />
 
+          {errors.description && <Errors>{errors.description.message}</Errors>}
+          <Controller
+            control={control}
+            name="description"
+            render={({ field: { onChange, onBlur, value } }) => (
+              <Input
+                placeholder="Descrição do produto:"
+                placeholderTextColor={theme.colors.placeholder}
+                defaultValue={value}
+                onChangeText={onChange}
+                height
+              />
+            )}
+          />
+
+
+          {errors.number && <Errors>{errors.number.message}</Errors>}
+          <Controller
+            control={control}
+            name="number"
+            render={({ field: { onChange, onBlur, value } }) => (
+              <Input
+                placeholder="Número de telefone: (WhatsApp)"
+                placeholderTextColor={theme.colors.placeholder}
+                onChangeText={onChange}
+                defaultValue={value}
+              />
+            )}
+          />
           <Button
             onPress={handleOpenSelectCategoryModal}
             title={ data ? data.type :'Selecione a categoria'}
-            color="black"
+            color={ data? theme.colors.success : theme.colors.text}
           />
 
           <RenderForm value={data ? data.type : undefined} formDataEditAd={data}/>
